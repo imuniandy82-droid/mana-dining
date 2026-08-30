@@ -84,9 +84,7 @@ export function MenuSection() {
             ) : (
               <div className="py-12 text-center">
                 <p className="font-serif text-xl italic text-espresso/50">
-                  {categories[activeIdx].name === "Desserts"
-                    ? "Dessert menu coming soon."
-                    : restaurant.menuNote}
+                  {restaurant.menuNote}
                 </p>
                 <a
                   href={restaurant.phoneTel}
@@ -98,41 +96,6 @@ export function MenuSection() {
             )}
           </motion.div>
         </AnimatePresence>
-
-        {/* Lunch Promo */}
-        {restaurant.lunchPromo.length > 0 && (
-          <ScrollReveal delay={0.2}>
-            <div className="mt-20 border-t border-warm-brown/15 pt-12">
-              <div className="mb-8 text-center">
-                <span className="inline-block border border-warm-brown/20 bg-warm-brown/5 px-5 py-1.5 font-sans text-[10px] tracking-[0.25em] uppercase text-warm-brown/60">
-                  Lunch Promo
-                </span>
-              </div>
-              <div className="mx-auto max-w-2xl space-y-4">
-                {restaurant.lunchPromo.map((item) => (
-                  <div
-                    key={item.name}
-                    className="flex flex-col gap-1 border-b border-warm-brown/8 pb-3 sm:flex-row sm:items-baseline sm:justify-between"
-                  >
-                    <div>
-                      <span className="font-serif text-base text-espresso">
-                        {item.name}
-                      </span>
-                      {item.note && (
-                        <span className="ml-2 font-sans text-xs text-espresso/40">
-                          {item.note}
-                        </span>
-                      )}
-                    </div>
-                    <span className="shrink-0 font-serif text-base text-warm-brown">
-                      {item.price}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-        )}
       </div>
     </section>
   );
