@@ -1,0 +1,201 @@
+/* DO NOT CHANGE */
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+/* DO NOT CHANGE */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ── Mana Vintage Theme Tokens ────────────────────── */
+  --color-cream: #f0e6d3;
+  --color-cream-light: #f7f1e6;
+  --color-parchment: #e8dcc8;
+  --color-gold: #c4a265;
+  --color-gold-dark: #a08345;
+  --color-warm-brown: #8b7355;
+  --color-espresso: #1a1612;
+  --color-espresso-light: #241f1a;
+  --color-espresso-medium: #2e2822;
+
+  --font-serif: "Cormorant Garamond", "Georgia", serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+}
+
+/* ── Vintage Theme ─────────────────────────────────── */
+:root {
+  --radius: 0.375rem;
+  --background: #1a1612;
+  --foreground: #f0e6d3;
+  --card: #241f1a;
+  --card-foreground: #f0e6d3;
+  --popover: #241f1a;
+  --popover-foreground: #f0e6d3;
+  --primary: #c4a265;
+  --primary-foreground: #1a1612;
+  --secondary: #2e2822;
+  --secondary-foreground: #f0e6d3;
+  --muted: #2e2822;
+  --muted-foreground: #9a8c7a;
+  --accent: #2e2822;
+  --accent-foreground: #f0e6d3;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgba(196, 162, 101, 0.15);
+  --input: rgba(196, 162, 101, 0.12);
+  --ring: #c4a265;
+  --chart-1: #c4a265;
+  --chart-2: #a08345;
+  --chart-3: #8b7355;
+  --chart-4: #d4b87a;
+  --chart-5: #6b5a42;
+  --sidebar: #1a1612;
+  --sidebar-foreground: #f0e6d3;
+  --sidebar-primary: #c4a265;
+  --sidebar-primary-foreground: #1a1612;
+  --sidebar-accent: #2e2822;
+  --sidebar-accent-foreground: #f0e6d3;
+  --sidebar-border: rgba(196, 162, 101, 0.15);
+  --sidebar-ring: #c4a265;
+}
+
+/* ── Base Styles ───────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  button:not([disabled]),
+  [role="button"]:not([disabled]) {
+    cursor: pointer;
+  }
+}
+
+/* ── Typography ────────────────────────────────────── */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+}
+
+/* ── Grain Overlay ─────────────────────────────────── */
+.grain-overlay {
+  position: relative;
+}
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ── Aged Paper Section ────────────────────────────── */
+.aged-paper {
+  background-color: #f2e8d5;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(196, 162, 101, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(139, 115, 85, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(160, 131, 69, 0.03) 0%, transparent 50%);
+}
+
+/* ── Decorative Divider ────────────────────────────── */
+.vintage-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0.4;
+}
+.vintage-divider::before,
+.vintage-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+/* ── Image Sepia Warmth ────────────────────────────── */
+.img-warm {
+  filter: sepia(0.08) saturate(0.95) brightness(0.95);
+  transition: filter 0.5s ease;
+}
+.img-warm:hover {
+  filter: sepia(0) saturate(1) brightness(1);
+}
+
+/* ── Scrollbar Styling ─────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1612;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(196, 162, 101, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(196, 162, 101, 0.5);
+}
+
+/* ── Selection ─────────────────────────────────────── */
+::selection {
+  background: rgba(196, 162, 101, 0.3);
+  color: #f0e6d3;
+}
+
+/* ── Prefers Reduced Motion ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
