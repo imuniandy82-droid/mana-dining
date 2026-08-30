@@ -38,7 +38,7 @@ export const restaurant = {
   // Replace with real URLs when available
   social: {
     instagram: "https://www.instagram.com/manadining?igsi=MTl3Z3lmdjduajhzMw==",
-    facebook: "https://facebook.com/",
+    facebook: "https://www.facebook.com/share/1FRj4S9wfZ/",
   },
 
   // ── Opening Hours ────────────────────────────────────────
