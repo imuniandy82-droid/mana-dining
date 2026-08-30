@@ -37,7 +37,7 @@ export const restaurant = {
   // ── Social Media ─────────────────────────────────────────
   // Replace with real URLs when available
   social: {
-    instagram: "https://instagram.com/",
+    instagram: "https://www.instagram.com/manadining?igsi=MTl3Z3lmdjduajhzMw==",
     facebook: "https://facebook.com/",
   },
 
