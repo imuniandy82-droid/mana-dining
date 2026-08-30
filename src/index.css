@@ -167,6 +167,15 @@
   filter: sepia(0) saturate(1) brightness(1);
 }
 
+/* ── No Scrollbar (for horizontal tab bars) ──────── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* ── Scrollbar Styling ─────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;

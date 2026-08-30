@@ -32,7 +32,8 @@ export const restaurant = {
 
   // ── Social Media ─────────────────────────────────────────
   social: {
-    instagram: "https://www.instagram.com/manadining?igsi=MTl3Z3lmdjduajhzMw==",
+    instagram:
+      "https://www.instagram.com/manadining?igsi=MTl3Z3lmdjduajhzMw==",
     facebook: "https://www.facebook.com/share/1FRj4S9wfZ/",
   },
 
@@ -180,9 +181,10 @@ export const restaurant = {
   ],
 
   // ── Menu ─────────────────────────────────────────────────
-  // All items below are verified restaurant data.
-  // To update: edit the items array in the relevant category.
+  // Every category from the real restaurant menu.
+  // Update items here — the MenuSection component reads from this.
   menuCategories: [
+    // ── STARTERS ─────────────────────────────────────────
     {
       name: "Starters",
       items: [
@@ -200,7 +202,7 @@ export const restaurant = {
         {
           name: "Oyster Jepun",
           description:
-            "Selected sashimi-grade oysters served with passion fruit sauce. Chef's note: guests with health concerns may opt for the grilled version.",
+            "Selected sashimi-grade oysters served with passion fruit sauce. Guests with health concerns may opt for the grilled version.",
           price: "",
         },
         {
@@ -241,6 +243,7 @@ export const restaurant = {
         },
       ],
     },
+    // ── MAINS ────────────────────────────────────────────
     {
       name: "Mains",
       items: [
@@ -298,72 +301,11 @@ export const restaurant = {
             "Homemade tomato sauce, premium bomba rice, tiger prawn, clams, good to share with 3 pax.",
           price: "RM 88",
         },
-        {
-          name: "Beef Bolognese",
-          description:
-            "Wagyu minced beef, homemade tomato sauce, parmesan cheese.",
-          price: "RM 26",
-        },
-        {
-          name: "Pad Kra Pao Pasta",
-          description: "Thai basil stir fry chicken, pasta.",
-          price: "RM 24",
-        },
-        {
-          name: "Pasta Masak Lemak",
-          description: "Whole drumstick, lemak paste.",
-          price: "RM 24",
-        },
-        {
-          name: "Aglio Olio Pasta",
-          description:
-            "Extra virgin olive oil, cherry tomatoes, grilled chicken breast.",
-          price: "RM 22",
-        },
-        {
-          name: "Mushroom Cream Pasta",
-          description: "Assorted mushroom, egg yolk, truffle oil.",
-          price: "RM 24",
-        },
-        {
-          name: "Pesto Pasta",
-          description: "Parmesan, baby spinach, grilled chicken breast.",
-          price: "RM 22",
-        },
-        {
-          name: "Pad Kra Pao Rice",
-          description: "Thai basil stir fry chicken.",
-          price: "RM 18",
-        },
-        {
-          name: "Japanese Chicken Katsu",
-          description: "Panko breaded chicken, homemade japanese curry.",
-          price: "RM 25",
-        },
-        {
-          name: "Chicken Hamburg Rice",
-          description: "Homemade chicken patty, brown stock, onsen egg.",
-          price: "RM 18",
-        },
-        {
-          name: "Gong Bao Rice",
-          description: "Chicken cube, capsicum, carrot, onsen egg.",
-          price: "RM 19",
-        },
-        {
-          name: "Fish",
-          description: "",
-          price: "RM 18",
-        },
-        {
-          name: "Chicken",
-          description: "",
-          price: "RM 20",
-        },
       ],
     },
+    // ── CARBS ────────────────────────────────────────────
     {
-      name: "Sides",
+      name: "Carbs",
       items: [
         {
           name: "Spanish Mun Fan (Paella)",
@@ -394,6 +336,93 @@ export const restaurant = {
             "Butter-caramelised mushrooms with pappardelle and parmesan cheese.",
           price: "RM 32",
         },
+      ],
+    },
+    // ── RICE ─────────────────────────────────────────────
+    {
+      name: "Rice",
+      items: [
+        {
+          name: "Pad Kra Pao Rice",
+          description: "Thai basil stir fry chicken.",
+          price: "RM 18",
+        },
+        {
+          name: "Japanese Chicken Katsu",
+          description: "Panko breaded chicken, homemade japanese curry.",
+          price: "RM 25",
+        },
+        {
+          name: "Chicken Hamburg Rice",
+          description: "Homemade chicken patty, brown stock, onsen egg.",
+          price: "RM 18",
+        },
+      ],
+    },
+    // ── PASTA ────────────────────────────────────────────
+    {
+      name: "Pasta",
+      items: [
+        {
+          name: "Beef Bolognese",
+          description:
+            "Wagyu minced beef, homemade tomato sauce, parmesan cheese.",
+          price: "RM 26",
+        },
+        {
+          name: "Pad Kra Pao Pasta",
+          description: "Thai basil stir fry chicken, pasta.",
+          price: "RM 24",
+        },
+        {
+          name: "Pasta Masak Lemak",
+          description: "Whole drumstick, lemak paste.",
+          price: "RM 24",
+        },
+        {
+          name: "Aglio Olio Pasta",
+          description:
+            "Extra virgin olive oil, cherry tomatoes, grilled chicken breast.",
+          price: "RM 22",
+        },
+        {
+          name: "Mushroom Cream Pasta",
+          description: "Assorted mushroom, egg yolk, truffle oil.",
+          price: "RM 24",
+        },
+        {
+          name: "Pesto Pasta",
+          description:
+            "Parmesan, baby spinach, grilled chicken breast.",
+          price: "RM 22",
+        },
+      ],
+    },
+    // ── OTHERS ───────────────────────────────────────────
+    {
+      name: "Others",
+      items: [
+        {
+          name: "Gong Bao Rice",
+          description: "Chicken cube, capsicum, carrot, onsen egg.",
+          price: "RM 19",
+        },
+        {
+          name: "Fish",
+          description: "",
+          price: "RM 18",
+        },
+        {
+          name: "Chicken",
+          description: "",
+          price: "RM 20",
+        },
+      ],
+    },
+    // ── DINNER MENU ──────────────────────────────────────
+    {
+      name: "Dinner Menu",
+      items: [
         {
           name: "Chicken Karaage",
           description: "",
@@ -404,25 +433,11 @@ export const restaurant = {
           description: "",
           price: "RM 19",
         },
-        {
-          name: "Extra Chicken Breast",
-          description: "For aglio olio w/ grilled chicken.",
-          price: "RM 8",
-        },
-        {
-          name: "Extra Minced Chicken",
-          description: "For pad kra pao rice.",
-          price: "RM 8",
-        },
-        {
-          name: "Passion Fruit Lemon Tea",
-          description: "Drink upgrade.",
-          price: "RM 5",
-        },
       ],
     },
+    // ── LUNCH PROMO ──────────────────────────────────────
     {
-      name: "Lunch Set",
+      name: "Lunch Promo",
       items: [
         {
           name: "Aglio Olio w/ Grilled Chicken",
@@ -446,38 +461,36 @@ export const restaurant = {
         },
       ],
     },
+    // ── ADD ONS ──────────────────────────────────────────
     {
-      name: "Drinks",
+      name: "Add Ons",
       items: [
         {
-          name: "Promosso Spumante Millesimato Doc",
-          description: "Montelupo doc. Fresh pear citrus hints.",
-          price: "",
+          name: "Extra Chicken Breast",
+          description: "For aglio olio w/ grilled chicken.",
+          price: "RM 8",
         },
         {
-          name: "Anna Ghione Moscato",
-          description:
-            "Moscato from Italy Piedmont (Asti) floral peach gentle bubbles.",
-          price: "RM 188",
+          name: "Extra Minced Chicken",
+          description: "For pad kra pao rice.",
+          price: "RM 8",
         },
         {
-          name: "Botter Delle Venezie Doc",
-          description:
-            "Pinot grigio from Italy Veneto crisp apple, light floral.",
-          price: "RM 165",
+          name: "Extra Chicken Breast",
+          description: "For scallion oil noodle.",
+          price: "RM 8",
         },
         {
-          name: "Yalumba Y-Series Viognier",
-          description:
-            "Viognier from Australia Wrattonbully floral notes with body.",
-          price: "RM 155",
+          name: "Passion Fruit Lemon Tea",
+          description: "Drink upgrade.",
+          price: "RM 5",
         },
-        {
-          name: "Botter Lambrusco Rosso",
-          description:
-            "Lambrusco from Italy Emilia Romagna fizzy tart red fruit.",
-          price: "RM 140",
-        },
+      ],
+    },
+    // ── RED WINE ─────────────────────────────────────────
+    {
+      name: "Red Wine",
+      items: [
         {
           name: "Valqueligoso VB",
           description: "",
@@ -536,6 +549,59 @@ export const restaurant = {
           description:
             "Pinot noir from South Australia. Light bodied jammy red fruit notes.",
           price: "RM 155",
+        },
+      ],
+    },
+    // ── SPARKLING WINE ───────────────────────────────────
+    {
+      name: "Sparkling Wine",
+      items: [
+        {
+          name: "Promosso Spumante Millesimato Doc",
+          description: "Montelupo doc. Fresh pear citrus hints.",
+          price: "",
+        },
+      ],
+    },
+    // ── SWEET WHITE WINE ─────────────────────────────────
+    {
+      name: "Sweet White",
+      items: [
+        {
+          name: "Anna Ghione Moscato",
+          description:
+            "Moscato from Italy Piedmont (Asti) floral peach gentle bubbles.",
+          price: "RM 188",
+        },
+      ],
+    },
+    // ── WHITE WINE ───────────────────────────────────────
+    {
+      name: "White Wine",
+      items: [
+        {
+          name: "Botter Delle Venezie Doc",
+          description:
+            "Pinot grigio from Italy Veneto. Crisp apple, light floral.",
+          price: "RM 165",
+        },
+        {
+          name: "Yalumba Y-Series Viognier",
+          description:
+            "Viognier from Australia Wrattonbully. Floral notes with body.",
+          price: "RM 155",
+        },
+      ],
+    },
+    // ── RED SPARKLING WINE ───────────────────────────────
+    {
+      name: "Red Sparkling",
+      items: [
+        {
+          name: "Botter Lambrusco Rosso",
+          description:
+            "Lambrusco from Italy Emilia Romagna. Fizzy tart red fruit.",
+          price: "RM 140",
         },
       ],
     },
