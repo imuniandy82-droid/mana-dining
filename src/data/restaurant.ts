@@ -27,7 +27,7 @@ export const restaurant = {
   // Replace with your own Google Maps share link when available
   googleMapsUrl: "https://maps.app.goo.gl/b9DoKukdddt8Yin28",
   directionsUrl:
-    "https://www.google.com/maps/dir/?api=1&destination=Mana+66-1+Jalan+Hang+Kasturi+City+Centre+50050+Kuala+Lumpur",
+    "https://maps.app.goo.gl/b9DoKukdddt8Yin28",
 
   // ── Booking ──────────────────────────────────────────────
   // Set to a real booking URL when available (e.g., Chope, OpenTable)
