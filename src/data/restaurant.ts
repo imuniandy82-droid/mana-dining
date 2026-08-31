@@ -68,10 +68,10 @@ export const restaurant = {
   ],
 
   // ── Hero Image ───────────────────────────────────────────
-  heroImage: "/images/hero.png",
+  heroImage: "/images/hero.jpg",
 
   // ── Introduction ─────────────────────────────────────────
-  introImage: "/images/intro.png",
+  introImage: "/images/intro.jpg",
   introHeading: "A place worth slowing down for.",
   introText:
     "Nestled along Jalan Hang Kasturi in the heart of Kuala Lumpur, Mana is a place to slow down and savour. Bold orange walls, flowing fabric drapes, and warm globe lighting create an atmosphere that is at once industrial and intimate. The food takes centre stage and the evening unfolds at its own pace. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
@@ -82,28 +82,28 @@ export const restaurant = {
       name: "Angus Short Ribs",
       description:
         "Tomato slow braised 5 hours and finish on grill, side with garlic mashed.",
-      image: "/images/dish-angus-short-ribs.png",
+      image: "/images/dish-angus-short-ribs.jpg",
     },
     {
       name: "Spanish Mun Fan (Paella)",
       description:
         "Homemade tomato sauce, premium bomba rice, tiger prawn, clams, good to share with 3 pax.",
-      image: "/images/dish-paella.png",
+      image: "/images/dish-paella.jpg",
     },
   ],
 
   // ── Experience ───────────────────────────────────────────
   experienceImages: [
     {
-      src: "/images/experience-1.png",
+      src: "/images/experience-1.jpg",
       alt: "Mana dining room with bold orange walls and flowing fabric drapes overhead",
     },
     {
-      src: "/images/experience-2.png",
+      src: "/images/experience-2.jpg",
       alt: "Mana interior with wooden furniture, exposed beams, and fabric drapes",
     },
     {
-      src: "/images/experience-3.png",
+      src: "/images/experience-3.jpg",
       alt: "Mana evening atmosphere with fabric ceiling drapes casting warm amber glow",
     },
   ],
@@ -111,7 +111,7 @@ export const restaurant = {
     "Bold orange walls meet flowing fabric drapes overhead. Globe pendants cast a warm amber glow across dark wood tables, while exposed beams and raw concrete remind you this is a space with character. Mana is built for lingering — for conversations that stretch past dessert, for dates that run late, for meals that become memories.",
 
   // ── Story ────────────────────────────────────────────────
-  storyImage: "/images/story.png",
+  storyImage: "/images/story.jpg",
   storyHeading: "Come for the food.\nStay for the atmosphere.",
   storyText:
     "At Mana, we believe the best meals are shared. Discover dishes crafted with care, savoured in good company, and accompanied by the kind of conversation that only happens when time slows down. This is dining without the rush — unhurried, uncomplicated, and entirely satisfying.",
@@ -119,26 +119,26 @@ export const restaurant = {
   // ── Gallery ──────────────────────────────────────────────
   galleryImages: [
     // ── FOOD ──────────────────────────────────────────────
-    { src: "/images/food-1.png", alt: "Spanish Mun Fan Paella with tiger prawns and clams", category: "food" },
-    { src: "/images/food-2.png", alt: "Paella V2 closeup with prawns and creamy sauce", category: "food" },
-    { src: "/images/food-3.png", alt: "Rendang Croquettes golden fried with fresh parsley", category: "food" },
-    { src: "/images/food-4.png", alt: "Japanese Chicken Katsu with homemade curry and rice", category: "food" },
-    { src: "/images/food-5.png", alt: "Smoke Spuds shredded potatoes with tartar sauce and ebiko", category: "food" },
-    { src: "/images/food-6.png", alt: "Full table feast with paella, oxtail, vongole pasta, and wine", category: "food" },
-    { src: "/images/food-7.png", alt: "Pan Seared Norwegian Salmon and Vongole pasta with white wine", category: "food" },
-    { src: "/images/food-8.png", alt: "Linguine Ala Vongole with fresh clams", category: "food" },
-    { src: "/images/food-9.png", alt: "Grilled Pata Margret sliced duck breast with cherry sauce and greens", category: "food" },
-    { src: "/images/food-10.png", alt: "Angus Ribeye steak with herb chimichurri and roasted potatoes", category: "food" },
-    { src: "/images/food-11.png", alt: "Smoke Spuds with tartar sauce, ebiko, and crispy potato chips", category: "food" },
-    { src: "/images/food-12.png", alt: "Namyu Gai Yik crispy fried chicken with house chilli mayo", category: "food" },
-    { src: "/images/food-13.png", alt: "Japanese Chicken Katsu with homemade curry and rice", category: "food" },
+    { src: "/images/food-1.jpg", alt: "Spanish Mun Fan Paella with tiger prawns and clams", category: "food" },
+    { src: "/images/food-2.jpg", alt: "Paella V2 closeup with prawns and creamy sauce", category: "food" },
+    { src: "/images/food-3.jpg", alt: "Rendang Croquettes golden fried with fresh parsley", category: "food" },
+    { src: "/images/food-4.jpg", alt: "Japanese Chicken Katsu with homemade curry and rice", category: "food" },
+    { src: "/images/food-5.jpg", alt: "Smoke Spuds shredded potatoes with tartar sauce and ebiko", category: "food" },
+    { src: "/images/food-6.jpg", alt: "Full table feast with paella, oxtail, vongole pasta, and wine", category: "food" },
+    { src: "/images/food-7.jpg", alt: "Pan Seared Norwegian Salmon and Vongole pasta with white wine", category: "food" },
+    { src: "/images/food-8.jpg", alt: "Linguine Ala Vongole with fresh clams", category: "food" },
+    { src: "/images/food-9.jpg", alt: "Grilled Pata Margret sliced duck breast with cherry sauce and greens", category: "food" },
+    { src: "/images/food-10.jpg", alt: "Angus Ribeye steak with herb chimichurri and roasted potatoes", category: "food" },
+    { src: "/images/food-11.jpg", alt: "Smoke Spuds with tartar sauce, ebiko, and crispy potato chips", category: "food" },
+    { src: "/images/food-12.jpg", alt: "Namyu Gai Yik crispy fried chicken with house chilli mayo", category: "food" },
+    { src: "/images/food-13.jpg", alt: "Japanese Chicken Katsu with homemade curry and rice", category: "food" },
     // ── SPACE ─────────────────────────────────────────────
-    { src: "/images/space-1.png", alt: "Mana dining room with bold orange walls, globe pendant lights, and dark wood tables", category: "space" },
-    { src: "/images/space-2.png", alt: "Mana dining area with orange walls, grey banquettes, arc lamp, and flowing fabric ceiling drapes", category: "space" },
-    { src: "/images/space-3.png", alt: "Mana intimate corner with round globe pendant, orange walls, arc lamp, and cane chairs", category: "space" },
-    { src: "/images/space-4.png", alt: "Mana wine shelf with curated bottles, floral arrangement, and artwork", category: "space" },
-    { src: "/images/space-5.png", alt: "Mana bar area with dark walls, exposed bottles, and gallery artwork", category: "space" },
-    { src: "/images/space-6.png", alt: "Mana private dining table with cane chairs, pendant light, and flowers on windowsill", category: "space" },
+    { src: "/images/space-1.jpg", alt: "Mana dining room with bold orange walls, globe pendant lights, and dark wood tables", category: "space" },
+    { src: "/images/space-2.jpg", alt: "Mana dining area with orange walls, grey banquettes, arc lamp, and flowing fabric ceiling drapes", category: "space" },
+    { src: "/images/space-3.jpg", alt: "Mana intimate corner with round globe pendant, orange walls, arc lamp, and cane chairs", category: "space" },
+    { src: "/images/space-4.jpg", alt: "Mana wine shelf with curated bottles, floral arrangement, and artwork", category: "space" },
+    { src: "/images/space-5.jpg", alt: "Mana bar area with dark walls, exposed bottles, and gallery artwork", category: "space" },
+    { src: "/images/space-6.jpg", alt: "Mana private dining table with cane chairs, pendant light, and flowers on windowsill", category: "space" },
   ],
 
   // ── Menu ─────────────────────────────────────────────────
