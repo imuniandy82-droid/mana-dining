@@ -1,57 +1,33 @@
 # Mana Restaurant — Image Guide
 
-Save each photo from your Google Maps listing into `public/images/` with these exact filenames:
+## How to Replace Images
 
-## Main Sections
+All images use **PNG format** from `public/images/`.
 
-| Filename | From Google Review | Section |
-|----------|-------------------|---------|
-| `hero.jpg` | Mana official post — dark evening interior with fabric ceiling drapes, globe lights, dark tables | Hero (full-screen) |
-| `intro.jpg` | Xin Ee Choong — orange wall, globe light, cane chairs, textured wall | Introduction |
-| `dish-lamb-ribs.jpg` | Marcus Yeo (2 weeks ago) — lamb ribs closeup with greens and sauce | Signature Dishes |
-| `dish-fried-chicken.jpg` | Jing Yee Woo — fried chicken on green-striped plate with yellow sauce | Signature Dishes |
-| `experience-1.jpg` | Jessy Wong — orange walls, fabric drapes, circular orange window, long dining room | The Experience |
-| `experience-2.jpg` | aqifyusup — exposed beams, bar area, white round table, globe lights | The Experience |
-| `experience-3.jpg` | Mana official — dark moody evening interior with fabric ceiling | The Experience |
-| `story.jpg` | siew ching Teh — daytime interior, fabric drapes, orange walls, tables | Story Section |
+### To use your real restaurant photos:
 
-## Gallery — Food
+1. **Save each photo** from your Google Maps listing (tap photo → three dots → Save to device)
+2. **Rename** to match the filename below
+3. **Upload** to `public/images/` folder (overwrite the existing placeholder)
+4. The website updates automatically — no code changes needed
 
-| Filename | From Google Review | Description |
-|----------|-------------------|-------------|
-| `food-1.jpg` | wehoong ho — Paella with prawns, clams, in metal pan | Spanish Mun Fan Paella |
-| `food-2.jpg` | Jing Yee Woo — Duck breast sliced with greens and cherry sauce | Grilled Pata Margret |
-| `food-3.jpg` | Jing Yee Woo — Fried chicken with sauce on green-striped plate | Namyu Gai Yik |
-| `food-4.jpg` | Siew Ling Hong — Aglio olio with chicken and cherry tomatoes | Aglio Olio Pasta |
-| `food-5.jpg` | Kenji Aiba — Mushroom cream pasta with egg yolk on top | Mushroom Cream Pasta |
-| `food-6.jpg` | Cyen Teh — Clam linguine/vongole on white plate | Vongole Pasta |
-| `food-7.jpg` | sara f — Three oysters on ice, blue striped plate | Oyster Jepun |
-| `food-8.jpg` | Marcus Yeo — Three golden croquettes with parsley | Rendang Croquettes |
-| `food-9.jpg` | Jaclyn Ooi — Smoked potatoes with toppings and orange garnish | Smoke Spuds |
-| `food-10.jpg` | Kenji Aiba — Angus ribeye with kailan and wasabi on ceramic plate | Angus Ribeye |
-| `food-11.jpg` | Marcus Yeo — Grilled prawns on metal oval plate with herbs | Udang Bakar |
-| `food-12.jpg` | Kong Delanie — Full table spread with paella, vongole, oxtail | Table Spread |
+### Image Map
 
-## Gallery — Space
+| Filename | Section | Description |
+|----------|---------|-------------|
+| `hero.png` | Hero | Dark evening interior with fabric ceiling drapes |
+| `intro.png` | Introduction | Orange wall, globe light, cane chairs |
+| `dish-lamb-ribs.png` | Signature Dishes | Lamb ribs closeup |
+| `dish-fried-chicken.png` | Signature Dishes | Fried chicken on plate |
+| `experience-1.png` | The Experience | Dining room, orange walls, circular window |
+| `experience-2.png` | The Experience | Bar area, exposed beams |
+| `experience-3.png` | The Experience | Dark moody evening interior |
+| `story.png` | Story Section | Daytime interior with fabric drapes |
+| `food-1.png` to `food-12.png` | Gallery (Food) | 12 food photos |
+| `space-1.png` to `space-6.png` | Gallery (Space) | 6 interior photos |
 
-| Filename | From Google Review | Description |
-|----------|-------------------|-------------|
-| `space-1.jpg` | Mana official — Dark moody evening interior, fabric ceiling drapes | Evening Interior |
-| `space-2.jpg` | Jessy Wong — Orange walls, fabric drapes, circular window, tables | Dining Room |
-| `space-3.jpg` | aqifyusup — Exposed beams, bar area, globe lights, artwork | Bar Area |
-| `space-4.jpg` | Xin Ee Choong — Orange wall, globe light, cane chairs, textured wall | Seating Area |
-| `space-5.jpg` | siew ching Teh — Daytime interior, fabric drapes, orange walls | Daytime View |
-| `space-6.jpg` | Ming kuang Lim — Interior with wine menu stand, fabric drapes | Wine Corner |
-
----
-
-**How to add images:**
-1. Go to your Google Maps listing
-2. Click on each photo
-3. Save the full-resolution version
-4. Rename it to match the filename above
-5. Place it in `public/images/`
-6. The website will automatically use it!
-
-**Tip:** On mobile, tap the photo → tap the three dots → Save to device.
-On desktop, right-click the photo → Save image as → rename to match.
+### Notes
+- Keep filenames exactly as shown (lowercase, hyphens, .png extension)
+- Any size works — the CSS handles responsive scaling
+- Larger images = better quality (recommended: 1200px+ wide)
+- Currently showing dark brown placeholder images

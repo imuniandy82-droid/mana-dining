@@ -4,11 +4,8 @@
 // ============================================================
 
 // ── Image Note ─────────────────────────────────────────────
-// Currently using curated Unsplash images that match Mana's dark
-// moody amber aesthetic. To use your real Mana photos:
-// 1. Save each photo from Google Maps to public/images/
-// 2. Replace the URLs below with "/images/your-filename.jpg"
-// See public/images/IMAGE_GUIDE.md for the full mapping.
+// All images use local PNG files from public/images/.
+// Replace any file in public/images/ to update the site.
 
 export const restaurant = {
   name: "MANA",
@@ -71,14 +68,10 @@ export const restaurant = {
   ],
 
   // ── Hero Image ───────────────────────────────────────────
-  // Replace: /images/hero.jpg — Mana dark evening interior with fabric ceiling drapes
-  heroImage:
-    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80&auto=format",
+  heroImage: "/images/hero.png",
 
   // ── Introduction ─────────────────────────────────────────
-  // Replace: /images/intro.jpg — Mana orange wall, globe light, cane chairs
-  introImage:
-    "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=900&q=80&auto=format",
+  introImage: "/images/intro.png",
   introHeading: "A place worth slowing down for.",
   introText:
     "Nestled along Jalan Hang Kasturi in the heart of Kuala Lumpur, Mana is a place to slow down and savour. Bold orange walls, flowing fabric drapes, and warm globe lighting create an atmosphere that is at once industrial and intimate. The food takes centre stage and the evening unfolds at its own pace. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
@@ -89,145 +82,62 @@ export const restaurant = {
       name: "Lamb Ribs",
       description:
         "A standout dish — rich, tender, and full of depth. Slow-cooked to perfection, the lamb ribs are a must-try for any visitor.",
-      // Replace: /images/dish-lamb-ribs.jpg — Mana lamb ribs closeup
-      image:
-        "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80&auto=format",
+      image: "/images/dish-lamb-ribs.png",
     },
     {
       name: "Nam Yu Fried Chicken",
       description:
         "Crispy, tempura-style coating with a distinctive fermented soy bean flavour. A textural delight that keeps you coming back for more.",
-      // Replace: /images/dish-fried-chicken.jpg — Mana fried chicken on green-striped plate
-      image:
-        "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80&auto=format",
+      image: "/images/dish-fried-chicken.png",
     },
   ],
 
   // ── Experience ───────────────────────────────────────────
   experienceImages: [
     {
-      // Replace: /images/experience-1.jpg — Mana orange walls, fabric drapes, circular window
-      src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80&auto=format",
-      alt: "Mana dining hall with warm amber lighting and industrial details",
+      src: "/images/experience-1.png",
+      alt: "Mana dining room with bold orange walls and flowing fabric drapes overhead",
     },
     {
-      // Replace: /images/experience-2.jpg — Mana bar area, exposed beams, globe lights
-      src: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1200&q=80&auto=format",
-      alt: "Intimate table setting under pendant lights",
+      src: "/images/experience-2.png",
+      alt: "Mana bar area with exposed beams, globe pendant lights, and curated artwork",
     },
     {
-      // Replace: /images/experience-3.jpg — Mana dark moody evening interior
-      src: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=1200&q=80&auto=format",
-      alt: "Evening atmosphere with exposed beams and warm glow",
+      src: "/images/experience-3.png",
+      alt: "Mana evening atmosphere with fabric ceiling drapes casting warm amber glow",
     },
   ],
   experienceText:
     "Bold orange walls meet flowing fabric drapes overhead. Globe pendants cast a warm amber glow across dark wood tables, while exposed beams and raw concrete remind you this is a space with character. Mana is built for lingering — for conversations that stretch past dessert, for dates that run late, for meals that become memories.",
 
   // ── Story ────────────────────────────────────────────────
-  // Replace: /images/story.jpg — Mana daytime interior with fabric drapes
-  storyImage:
-    "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1200&q=80&auto=format",
+  storyImage: "/images/story.png",
   storyHeading: "Come for the food.\nStay for the atmosphere.",
   storyText:
     "At Mana, we believe the best meals are shared. Discover dishes crafted with care, savoured in good company, and accompanied by the kind of conversation that only happens when time slows down. This is dining without the rush — unhurried, uncomplicated, and entirely satisfying.",
 
   // ── Gallery ──────────────────────────────────────────────
-  // Replace each src with /images/food-N.jpg or /images/space-N.jpg
-  // See public/images/IMAGE_GUIDE.md for the full mapping
   galleryImages: [
     // ── FOOD ──────────────────────────────────────────────
-    {
-      src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format",
-      alt: "Elegantly plated fine dining dish",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80&auto=format",
-      alt: "Beautifully presented signature dish",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&auto=format",
-      alt: "Close-up of a signature dish",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80&auto=format",
-      alt: "Pasta dish with fresh ingredients",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&q=80&auto=format",
-      alt: "Creamy pasta with rich sauce",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&q=80&auto=format",
-      alt: "Fresh seafood dish",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=600&q=80&auto=format",
-      alt: "Oysters served fresh",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=600&q=80&auto=format",
-      alt: "Artfully plated appetizer",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80&auto=format",
-      alt: "Fresh seasonal ingredients",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80&auto=format",
-      alt: "Perfectly grilled steak",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&q=80&auto=format",
-      alt: "Grilled meat with herbs",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80&auto=format",
-      alt: "Craft cocktail preparation",
-      category: "food",
-    },
+    { src: "/images/food-1.png", alt: "Spanish Mun Fan Paella with tiger prawns and clams", category: "food" },
+    { src: "/images/food-2.png", alt: "Udang Bakar grilled prawns with herbs on peri sauce", category: "food" },
+    { src: "/images/food-3.png", alt: "Grilled Pata Margret sliced duck breast with sautéed greens", category: "food" },
+    { src: "/images/food-4.png", alt: "Full table spread at Mana with paella, vongole, and signature dishes", category: "food" },
+    { src: "/images/food-5.png", alt: "Namyu Gai Yik crispy fried chicken with house sichuan chilli mayo", category: "food" },
+    { src: "/images/food-6.png", alt: "Aglio Olio with grilled chicken breast and cherry tomatoes", category: "food" },
+    { src: "/images/food-7.png", alt: "Mushroom Cream Pasta topped with egg yolk and truffle oil", category: "food" },
+    { src: "/images/food-8.png", alt: "Linguine Ala Vongole with fresh clams", category: "food" },
+    { src: "/images/food-9.png", alt: "Oyster Jepun sashimi-grade oysters served on ice", category: "food" },
+    { src: "/images/food-10.png", alt: "Rendang Croquettes golden fried with fresh parsley", category: "food" },
+    { src: "/images/food-11.png", alt: "Smoke Spuds shredded potatoes with tartar sauce and ebiko", category: "food" },
+    { src: "/images/food-12.png", alt: "Angus Ribeye with fried kailan, smoked seasalt and fermented wasabi", category: "food" },
     // ── SPACE ─────────────────────────────────────────────
-    {
-      src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80&auto=format",
-      alt: "Warm pendant lighting over dark wood dining tables",
-      category: "space",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&q=80&auto=format",
-      alt: "Dark moody restaurant interior with ambient lighting",
-      category: "space",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80&auto=format",
-      alt: "Cozy dining corner with warm atmosphere",
-      category: "space",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80&auto=format",
-      alt: "Restaurant interior with exposed beams and pendant lights",
-      category: "space",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=600&q=80&auto=format",
-      alt: "Wine and dining atmosphere",
-      category: "space",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80&auto=format",
-      alt: "Evening dining atmosphere with warm glow",
-      category: "space",
-    },
+    { src: "/images/space-1.png", alt: "Mana evening interior with flowing fabric ceiling drapes and globe pendant lights", category: "space" },
+    { src: "/images/space-2.png", alt: "Mana dining room with bold orange walls, fabric drapes, and circular window feature", category: "space" },
+    { src: "/images/space-3.png", alt: "Mana bar area with exposed wooden beams, globe pendant lights, and curated artwork", category: "space" },
+    { src: "/images/space-4.png", alt: "Mana seating area with orange walls, globe pendant light, and cane-backed chairs", category: "space" },
+    { src: "/images/space-5.png", alt: "Mana daytime dining room with fabric ceiling drapes and warm orange walls", category: "space" },
+    { src: "/images/space-6.png", alt: "Mana wine corner with fabric drapes, globe lights, and dining tables", category: "space" },
   ],
 
   // ── Menu ─────────────────────────────────────────────────
@@ -440,8 +350,7 @@ export const restaurant = {
         },
         {
           name: "Pesto Pasta",
-          description:
-            "Parmesan, baby spinach, grilled chicken breast.",
+          description: "Parmesan, baby spinach, grilled chicken breast.",
           price: "RM 22",
         },
       ],
