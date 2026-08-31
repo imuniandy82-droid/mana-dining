@@ -8,6 +8,7 @@ export const restaurant = {
   tagline: "Good food. Good company. A place to linger.",
   description:
     "A cozy, intimate dining destination in the heart of Kuala Lumpur — where good food, warm company, and unhurried evenings come together.",
+  dietary: "Pork Free & Lard Free",
 
   // ── Contact ──────────────────────────────────────────────
   address: {
@@ -39,13 +40,13 @@ export const restaurant = {
 
   // ── Opening Hours ────────────────────────────────────────
   openingHours: [
-    { day: "Monday", hours: "Please check our latest opening hours before visiting." },
-    { day: "Tuesday", hours: "Please check our latest opening hours before visiting." },
-    { day: "Wednesday", hours: "Please check our latest opening hours before visiting." },
-    { day: "Thursday", hours: "Please check our latest opening hours before visiting." },
-    { day: "Friday", hours: "Please check our latest opening hours before visiting." },
-    { day: "Saturday", hours: "Please check our latest opening hours before visiting." },
-    { day: "Sunday", hours: "Please check our latest opening hours before visiting." },
+    { day: "Monday", hours: "11:00 AM – 4:00 PM · 5:30 PM – 11:00 PM" },
+    { day: "Tuesday", hours: "Closed" },
+    { day: "Wednesday", hours: "11:00 AM – 4:00 PM · 5:30 PM – 11:00 PM" },
+    { day: "Thursday", hours: "11:00 AM – 4:00 PM · 5:30 PM – 11:00 PM" },
+    { day: "Friday", hours: "11:00 AM – 4:00 PM · 5:30 PM – 11:00 PM" },
+    { day: "Saturday", hours: "11:00 AM – 4:00 PM · 5:30 PM – 11:00 PM" },
+    { day: "Sunday", hours: "11:00 AM – 4:00 PM · 5:30 PM – 11:00 PM" },
   ],
 
   // ── Reviews ──────────────────────────────────────────────
@@ -63,12 +64,12 @@ export const restaurant = {
   ],
 
   // ── Hero Image ───────────────────────────────────────────
-  heroImage:
-    "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=80&auto=format",
+  // Mana official — dark evening interior with fabric ceiling drapes
+  heroImage: "/images/hero.jpg",
 
   // ── Introduction ─────────────────────────────────────────
-  introImage:
-    "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=900&q=80&auto=format",
+  // Xin Ee Choong — orange wall, globe light, cane chairs
+  introImage: "/images/intro.jpg",
   introHeading: "A place worth slowing down for.",
   introText:
     "Nestled along Jalan Hang Kasturi in the heart of Kuala Lumpur, Mana is a place to slow down and savour. Bold orange walls, flowing fabric drapes, and warm globe lighting create an atmosphere that is at once industrial and intimate. The food takes centre stage and the evening unfolds at its own pace. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
@@ -79,104 +80,139 @@ export const restaurant = {
       name: "Lamb Ribs",
       description:
         "A standout dish — rich, tender, and full of depth. Slow-cooked to perfection, the lamb ribs are a must-try for any visitor.",
-      image:
-        "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80&auto=format",
+      // Marcus Yeo — lamb ribs closeup with greens and sauce
+      image: "/images/dish-lamb-ribs.jpg",
     },
     {
       name: "Nam Yu Fried Chicken",
       description:
         "Crispy, tempura-style coating with a distinctive fermented soy bean flavour. A textural delight that keeps you coming back for more.",
-      image:
-        "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=800&q=80&auto=format",
+      // Jing Yee Woo — fried chicken on green-striped plate
+      image: "/images/dish-fried-chicken.jpg",
     },
   ],
 
   // ── Experience ───────────────────────────────────────────
   experienceImages: [
     {
-      src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80&auto=format",
-      alt: "Mana dining hall with warm amber lighting and industrial details",
+      // Jessy Wong — orange walls, fabric drapes, circular window
+      src: "/images/experience-1.jpg",
+      alt: "Mana dining room with bold orange walls and flowing fabric drapes overhead",
     },
     {
-      src: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1200&q=80&auto=format",
-      alt: "Intimate table setting under pendant lights",
+      // aqifyusup — exposed beams, bar area, globe lights
+      src: "/images/experience-2.jpg",
+      alt: "Mana bar area with exposed beams, globe pendant lights, and curated artwork",
     },
     {
-      src: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1200&q=80&auto=format",
-      alt: "Evening atmosphere with exposed beams and warm glow",
+      // Mana official — dark moody evening interior
+      src: "/images/experience-3.jpg",
+      alt: "Mana evening atmosphere with fabric ceiling drapes casting warm amber glow",
     },
   ],
   experienceText:
     "Bold orange walls meet flowing fabric drapes overhead. Globe pendants cast a warm amber glow across dark wood tables, while exposed beams and raw concrete remind you this is a space with character. Mana is built for lingering — for conversations that stretch past dessert, for dates that run late, for meals that become memories.",
 
   // ── Story ────────────────────────────────────────────────
-  storyImage:
-    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80&auto=format",
+  // siew ching Teh — daytime interior, fabric drapes, orange walls
+  storyImage: "/images/story.jpg",
   storyHeading: "Come for the food.\nStay for the atmosphere.",
   storyText:
     "At Mana, we believe the best meals are shared. Discover dishes crafted with care, savoured in good company, and accompanied by the kind of conversation that only happens when time slows down. This is dining without the rush — unhurried, uncomplicated, and entirely satisfying.",
 
   // ── Gallery ──────────────────────────────────────────────
   galleryImages: [
+    // ── FOOD ──────────────────────────────────────────────
     {
-      src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format",
-      alt: "Elegantly plated dish",
+      src: "/images/food-1.jpg",
+      alt: "Spanish Mun Fan Paella with tiger prawns and clams",
       category: "food",
     },
     {
-      src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80&auto=format",
-      alt: "Restaurant interior ambiance",
+      src: "/images/food-2.jpg",
+      alt: "Grilled Pata Margret sliced duck breast with sautéed greens",
+      category: "food",
+    },
+    {
+      src: "/images/food-3.jpg",
+      alt: "Namyu Gai Yik crispy fried chicken with house sichuan chilli mayo",
+      category: "food",
+    },
+    {
+      src: "/images/food-4.jpg",
+      alt: "Aglio Olio with grilled chicken breast and cherry tomatoes",
+      category: "food",
+    },
+    {
+      src: "/images/food-5.jpg",
+      alt: "Mushroom Cream Pasta topped with egg yolk and truffle oil",
+      category: "food",
+    },
+    {
+      src: "/images/food-6.jpg",
+      alt: "Linguine Ala Vongole with fresh clams",
+      category: "food",
+    },
+    {
+      src: "/images/food-7.jpg",
+      alt: "Oyster Jepun sashimi-grade oysters served on ice",
+      category: "food",
+    },
+    {
+      src: "/images/food-8.jpg",
+      alt: "Rendang Croquettes golden fried with fresh parsley",
+      category: "food",
+    },
+    {
+      src: "/images/food-9.jpg",
+      alt: "Smoke Spuds shredded potatoes with tartar sauce and ebiko",
+      category: "food",
+    },
+    {
+      src: "/images/food-10.jpg",
+      alt: "Angus Ribeye with fried kailan, smoked seasalt and fermented wasabi",
+      category: "food",
+    },
+    {
+      src: "/images/food-11.jpg",
+      alt: "Udang Bakar grilled prawns with herbs on peri sauce",
+      category: "food",
+    },
+    {
+      src: "/images/food-12.jpg",
+      alt: "Full table spread at Mana with paella, vongole, and signature dishes",
+      category: "food",
+    },
+    // ── SPACE ─────────────────────────────────────────────
+    {
+      src: "/images/space-1.jpg",
+      alt: "Mana evening interior with flowing fabric ceiling drapes and globe pendant lights",
       category: "space",
     },
     {
-      src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&auto=format",
-      alt: "Close-up of a signature dish",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80&auto=format",
-      alt: "Cozy dining corner",
+      src: "/images/space-2.jpg",
+      alt: "Mana dining room with bold orange walls, fabric drapes, and circular window feature",
       category: "space",
     },
     {
-      src: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80&auto=format",
-      alt: "Fresh seasonal ingredients",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80&auto=format",
-      alt: "Warm pendant lighting over dining tables",
+      src: "/images/space-3.jpg",
+      alt: "Mana bar area with exposed wooden beams, globe pendant lights, and curated artwork",
       category: "space",
     },
     {
-      src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80&auto=format",
-      alt: "Artisan pizza fresh from the oven",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80&auto=format",
-      alt: "Beautifully presented dessert",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80&auto=format",
-      alt: "Evening dining atmosphere",
+      src: "/images/space-4.jpg",
+      alt: "Mana seating area with orange walls, globe pendant light, and cane-backed chairs",
       category: "space",
     },
     {
-      src: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80&auto=format",
-      alt: "Grilled meat preparation",
-      category: "food",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80&auto=format",
-      alt: "Dark wood tables under warm industrial lighting",
+      src: "/images/space-5.jpg",
+      alt: "Mana daytime dining room with fabric ceiling drapes and warm orange walls",
       category: "space",
     },
     {
-      src: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80&auto=format",
-      alt: "Cocktail and drink preparation",
-      category: "food",
+      src: "/images/space-6.jpg",
+      alt: "Mana wine corner with fabric drapes, globe lights, and dining tables",
+      category: "space",
     },
   ],
 
