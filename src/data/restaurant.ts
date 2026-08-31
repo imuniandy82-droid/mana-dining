@@ -65,11 +65,13 @@ export const restaurant = {
 
   // ── Hero Image ───────────────────────────────────────────
   // Mana official — dark evening interior with fabric ceiling drapes
-  heroImage: "/images/hero.jpg",
+  heroImage:
+    "https://images.eatdrinkkl.com/store/postimage/66869/image/webp_version-9e6cc53145ef2727209f86c9f298c365.webp",
 
   // ── Introduction ─────────────────────────────────────────
   // Xin Ee Choong — orange wall, globe light, cane chairs
-  introImage: "/images/intro.jpg",
+  introImage:
+    "https://images.eatdrinkkl.com/store/postimage/66876/image/webp_version-9fc103f30841a93f0e750960a043b102.webp",
   introHeading: "A place worth slowing down for.",
   introText:
     "Nestled along Jalan Hang Kasturi in the heart of Kuala Lumpur, Mana is a place to slow down and savour. Bold orange walls, flowing fabric drapes, and warm globe lighting create an atmosphere that is at once industrial and intimate. The food takes centre stage and the evening unfolds at its own pace. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
@@ -80,33 +82,30 @@ export const restaurant = {
       name: "Lamb Ribs",
       description:
         "A standout dish — rich, tender, and full of depth. Slow-cooked to perfection, the lamb ribs are a must-try for any visitor.",
-      // Marcus Yeo — lamb ribs closeup with greens and sauce
-      image: "/images/dish-lamb-ribs.jpg",
+      image:
+        "https://images.eatdrinkkl.com/store/postimage/66866/image/webp_version-57efb26da9b404373e58767b93f0bc4b.webp",
     },
     {
       name: "Nam Yu Fried Chicken",
       description:
         "Crispy, tempura-style coating with a distinctive fermented soy bean flavour. A textural delight that keeps you coming back for more.",
-      // Jing Yee Woo — fried chicken on green-striped plate
-      image: "/images/dish-fried-chicken.jpg",
+      image:
+        "https://images.eatdrinkkl.com/store/postimage/66867/image/webp_version-ae1e148b57eab51851a2ce5c543d06cf.webp",
     },
   ],
 
   // ── Experience ───────────────────────────────────────────
   experienceImages: [
     {
-      // Jessy Wong — orange walls, fabric drapes, circular window
-      src: "/images/experience-1.jpg",
+      src: "https://images.eatdrinkkl.com/store/postimage/66873/image/webp_version-2cc243d32b9d66d4847e8f77ec05b710.webp",
       alt: "Mana dining room with bold orange walls and flowing fabric drapes overhead",
     },
     {
-      // aqifyusup — exposed beams, bar area, globe lights
-      src: "/images/experience-2.jpg",
+      src: "https://images.eatdrinkkl.com/store/postimage/66872/image/webp_version-6b79641f9258560891ec38c120bac2c6.webp",
       alt: "Mana bar area with exposed beams, globe pendant lights, and curated artwork",
     },
     {
-      // Mana official — dark moody evening interior
-      src: "/images/experience-3.jpg",
+      src: "https://images.eatdrinkkl.com/store/postimage/66875/image/webp_version-4f8fcbb8c07b5b15bc07e828d058663a.webp",
       alt: "Mana evening atmosphere with fabric ceiling drapes casting warm amber glow",
     },
   ],
@@ -114,8 +113,8 @@ export const restaurant = {
     "Bold orange walls meet flowing fabric drapes overhead. Globe pendants cast a warm amber glow across dark wood tables, while exposed beams and raw concrete remind you this is a space with character. Mana is built for lingering — for conversations that stretch past dessert, for dates that run late, for meals that become memories.",
 
   // ── Story ────────────────────────────────────────────────
-  // siew ching Teh — daytime interior, fabric drapes, orange walls
-  storyImage: "/images/story.jpg",
+  storyImage:
+    "https://images.eatdrinkkl.com/store/postimage/66877/image/webp_version-10bee002e82ad48055d679aa57418f37.webp",
   storyHeading: "Come for the food.\nStay for the atmosphere.",
   storyText:
     "At Mana, we believe the best meals are shared. Discover dishes crafted with care, savoured in good company, and accompanied by the kind of conversation that only happens when time slows down. This is dining without the rush — unhurried, uncomplicated, and entirely satisfying.",
@@ -124,94 +123,64 @@ export const restaurant = {
   galleryImages: [
     // ── FOOD ──────────────────────────────────────────────
     {
-      src: "/images/food-1.jpg",
-      alt: "Spanish Mun Fan Paella with tiger prawns and clams",
+      src: "https://images.eatdrinkkl.com/store/postimage/66866/image/webp_version-57efb26da9b404373e58767b93f0bc4b.webp",
+      alt: "Mana signature dish — beautifully plated on ceramic",
       category: "food",
     },
     {
-      src: "/images/food-2.jpg",
-      alt: "Grilled Pata Margret sliced duck breast with sautéed greens",
+      src: "https://images.eatdrinkkl.com/store/postimage/66867/image/webp_version-ae1e148b57eab51851a2ce5c543d06cf.webp",
+      alt: "Namyu Gai Yik crispy fried chicken with house chilli mayo",
       category: "food",
     },
     {
-      src: "/images/food-3.jpg",
-      alt: "Namyu Gai Yik crispy fried chicken with house sichuan chilli mayo",
+      src: "https://images.eatdrinkkl.com/store/postimage/66868/image/webp_version-a1cd73a0b9096565f0b24c03506b9ce5.webp",
+      alt: "Mana pasta dish with fresh ingredients",
       category: "food",
     },
     {
-      src: "/images/food-4.jpg",
-      alt: "Aglio Olio with grilled chicken breast and cherry tomatoes",
+      src: "https://images.eatdrinkkl.com/store/postimage/66870/image/webp_version-54cf7be3c6ab51ec00f8d8faa5505c3a.webp",
+      alt: "Pan-seared Norwegian salmon with burnt kailan and green oil dressing",
       category: "food",
     },
     {
-      src: "/images/food-5.jpg",
-      alt: "Mushroom Cream Pasta topped with egg yolk and truffle oil",
+      src: "https://images.eatdrinkkl.com/store/postimage/66871/image/webp_version-242de45f42edbf896beda867afbdf578.webp",
+      alt: "Mana rice bowl with Thai basil stir fry chicken",
       category: "food",
     },
     {
-      src: "/images/food-6.jpg",
-      alt: "Linguine Ala Vongole with fresh clams",
-      category: "food",
-    },
-    {
-      src: "/images/food-7.jpg",
-      alt: "Oyster Jepun sashimi-grade oysters served on ice",
-      category: "food",
-    },
-    {
-      src: "/images/food-8.jpg",
-      alt: "Rendang Croquettes golden fried with fresh parsley",
-      category: "food",
-    },
-    {
-      src: "/images/food-9.jpg",
-      alt: "Smoke Spuds shredded potatoes with tartar sauce and ebiko",
-      category: "food",
-    },
-    {
-      src: "/images/food-10.jpg",
+      src: "https://images.eatdrinkkl.com/store/postimage/66874/image/webp_version-8801067b206d83d98878736516d3a407.webp",
       alt: "Angus Ribeye with fried kailan, smoked seasalt and fermented wasabi",
       category: "food",
     },
     {
-      src: "/images/food-11.jpg",
-      alt: "Udang Bakar grilled prawns with herbs on peri sauce",
+      src: "https://images.eatdrinkkl.com/store/postimage/66869/image/webp_version-9e6cc53145ef2727209f86c9f298c365.webp",
+      alt: "Full table spread at Mana with paella, vongole, and signature dishes",
       category: "food",
     },
     {
-      src: "/images/food-12.jpg",
-      alt: "Full table spread at Mana with paella, vongole, and signature dishes",
+      src: "https://images.eatdrinkkl.com/store/postimage/66876/image/webp_version-9fc103f30841a93f0e750960a043b102.webp",
+      alt: "Spanish Mun Fan Paella with tiger prawns and clams",
       category: "food",
     },
     // ── SPACE ─────────────────────────────────────────────
     {
-      src: "/images/space-1.jpg",
-      alt: "Mana evening interior with flowing fabric ceiling drapes and globe pendant lights",
+      src: "https://images.eatdrinkkl.com/store/postimage/66873/image/webp_version-2cc243d32b9d66d4847e8f77ec05b710.webp",
+      alt: "Mana dining room with bold orange walls and flowing fabric drapes",
       category: "space",
     },
     {
-      src: "/images/space-2.jpg",
-      alt: "Mana dining room with bold orange walls, fabric drapes, and circular window feature",
+      src: "https://images.eatdrinkkl.com/store/postimage/66872/image/webp_version-6b79641f9258560891ec38c120bac2c6.webp",
+      alt: "Mana bar area with exposed beams, globe pendant lights, and curated artwork",
       category: "space",
     },
     {
-      src: "/images/space-3.jpg",
-      alt: "Mana bar area with exposed wooden beams, globe pendant lights, and curated artwork",
+      src: "https://images.eatdrinkkl.com/store/postimage/66875/image/webp_version-4f8fcbb8c07b5b15bc07e828d058663a.webp",
+      alt: "Mana evening atmosphere with fabric ceiling drapes casting warm amber glow",
       category: "space",
     },
     {
-      src: "/images/space-4.jpg",
-      alt: "Mana seating area with orange walls, globe pendant light, and cane-backed chairs",
-      category: "space",
-    },
-    {
-      src: "/images/space-5.jpg",
-      alt: "Mana daytime dining room with fabric ceiling drapes and warm orange walls",
-      category: "space",
-    },
-    {
-      src: "/images/space-6.jpg",
-      alt: "Mana wine corner with fabric drapes, globe lights, and dining tables",
+      src: "https://images.eatdrinkkl.com/store/postimage/66877/image/webp_version-10bee002e82ad48055d679aa57418f37.webp",
+      alt: "Mana seating area with warm lighting and wooden furniture",
       category: "space",
     },
   ],
