@@ -81,13 +81,13 @@ export const restaurant = {
     {
       name: "Angus Short Ribs",
       description:
-        "Tomato slow braised 5 hours and finish on grill, side with garlic mashed.",
+        "Tomato slow braised 5 hours and finish on grill, side with garlic mashed. A dish that defines the Mana experience.",
       image: "/images/dish-angus-short-ribs.jpg",
     },
     {
       name: "Spanish Mun Fan (Paella)",
       description:
-        "Homemade tomato sauce, premium bomba rice, tiger prawn, clams, good to share with 3 pax.",
+        "Homemade tomato sauce, premium bomba rice, tiger prawn, clams, good to share with 3 pax. Inspiration in every bite.",
       image: "/images/dish-paella.jpg",
     },
   ],
@@ -96,25 +96,25 @@ export const restaurant = {
   experienceImages: [
     {
       src: "/images/experience-1.jpg",
-      alt: "Mana grand opening night with candlelit tables and intimate dining atmosphere",
+      alt: "Mana — where the story begins. From a colonial trading street to your new favourite table.",
     },
     {
       src: "/images/experience-2.jpg",
-      alt: "Mana private dining celebration with warm ambient lighting and curated table setting",
+      alt: "Every plate at Mana tells a story — fresh ingredients, bold flavours, and quiet craft.",
     },
     {
       src: "/images/experience-3.jpg",
-      alt: "Mana heritage shophouse interior blending colonial history with modern dining",
+      alt: "The walls remember. Exposed concrete and raw texture give Mana its honest character.",
     },
   ],
   experienceText:
-    "From a colonial trading street to a modern dining destination — Mana lives inside a pre-war shophouse on Jalan Hang Kasturi. Exposed concrete, raw beams, and flowing fabric drapes set the tone. Warm lighting, cane chairs, and dark wood tables invite you to settle in. This is a place for lingering — for conversations that stretch past dessert, for dates that run late, for meals that become memories.",
+    "Mana lives inside a pre-war shophouse on Jalan Hang Kasturi — once a place for trade, now a place for the table. Every wall tells a story, every dish carries intention, and every evening unfolds at its own pace. This is dining without the rush — unhurried, uncomplicated, and entirely satisfying.",
 
   // ── Story ────────────────────────────────────────────────
   storyImage: "/images/story.jpg",
   storyHeading: "Come for the food.\nStay for the atmosphere.",
   storyText:
-    "At Mana, we believe the best meals are shared. Discover dishes crafted with care, savoured in good company, and accompanied by the kind of conversation that only happens when time slows down. This is dining without the rush — unhurried, uncomplicated, and entirely satisfying.",
+    "At Mana, the best meals are shared. Dishes crafted with care, savoured in good company, paired with the kind of conversation that only happens when time slows down. No rush. No pretence. Just good food, good people, and a place worth coming back to.",
 
   // ── Gallery ──────────────────────────────────────────────
   galleryImages: [
