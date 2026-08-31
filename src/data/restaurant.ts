@@ -74,7 +74,7 @@ export const restaurant = {
   introImage: "/images/intro.jpg",
   introHeading: "A place worth slowing down for.",
   introText:
-    "Nestled along Jalan Hang Kasturi in the heart of Kuala Lumpur, Mana is a place to slow down and savour. Bold orange walls, flowing fabric drapes, and warm globe lighting create an atmosphere that is at once industrial and intimate. The food takes centre stage and the evening unfolds at its own pace. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
+    "Tucked inside a pre-war shophouse on Jalan Hang Kasturi, Mana is a place to slow down and savour. Bold orange walls, exposed concrete, flowing fabric drapes, and warm globe lighting create an atmosphere that is at once industrial and intimate. The food is local fusion with an international twist — from Angus Short Ribs braised for five hours to Spanish Mun Fan meant for sharing. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
 
   // ── Signature Dishes ─────────────────────────────────────
   signatureDishes: [
@@ -96,19 +96,19 @@ export const restaurant = {
   experienceImages: [
     {
       src: "/images/experience-1.jpg",
-      alt: "Mana dining room with bold orange walls and flowing fabric drapes overhead",
+      alt: "Mana grand opening night with candlelit tables and intimate dining atmosphere",
     },
     {
       src: "/images/experience-2.jpg",
-      alt: "Mana interior with wooden furniture, exposed beams, and fabric drapes",
+      alt: "Mana private dining celebration with warm ambient lighting and curated table setting",
     },
     {
       src: "/images/experience-3.jpg",
-      alt: "Mana evening atmosphere with fabric ceiling drapes casting warm amber glow",
+      alt: "Mana heritage shophouse interior blending colonial history with modern dining",
     },
   ],
   experienceText:
-    "Bold orange walls meet flowing fabric drapes overhead. Globe pendants cast a warm amber glow across dark wood tables, while exposed beams and raw concrete remind you this is a space with character. Mana is built for lingering — for conversations that stretch past dessert, for dates that run late, for meals that become memories.",
+    "From a colonial trading street to a modern dining destination — Mana lives inside a pre-war shophouse on Jalan Hang Kasturi. Exposed concrete, raw beams, and flowing fabric drapes set the tone. Warm lighting, cane chairs, and dark wood tables invite you to settle in. This is a place for lingering — for conversations that stretch past dessert, for dates that run late, for meals that become memories.",
 
   // ── Story ────────────────────────────────────────────────
   storyImage: "/images/story.jpg",
@@ -119,26 +119,26 @@ export const restaurant = {
   // ── Gallery ──────────────────────────────────────────────
   galleryImages: [
     // ── FOOD ──────────────────────────────────────────────
-    { src: "/images/food-1.jpg", alt: "Spanish Mun Fan Paella with tiger prawns and clams", category: "food" },
-    { src: "/images/food-2.jpg", alt: "Paella V2 closeup with prawns and creamy sauce", category: "food" },
-    { src: "/images/food-3.jpg", alt: "Rendang Croquettes golden fried with fresh parsley", category: "food" },
-    { src: "/images/food-4.jpg", alt: "Japanese Chicken Katsu with homemade curry and rice", category: "food" },
-    { src: "/images/food-5.jpg", alt: "Smoke Spuds shredded potatoes with tartar sauce and ebiko", category: "food" },
-    { src: "/images/food-6.jpg", alt: "Full table feast with paella, oxtail, vongole pasta, and wine", category: "food" },
-    { src: "/images/food-7.jpg", alt: "Pan Seared Norwegian Salmon and Vongole pasta with white wine", category: "food" },
-    { src: "/images/food-8.jpg", alt: "Linguine Ala Vongole with fresh clams", category: "food" },
-    { src: "/images/food-9.jpg", alt: "Grilled Pata Margret sliced duck breast with cherry sauce and greens", category: "food" },
-    { src: "/images/food-10.jpg", alt: "Angus Ribeye steak with herb chimichurri and roasted potatoes", category: "food" },
-    { src: "/images/food-11.jpg", alt: "Smoke Spuds with tartar sauce, ebiko, and crispy potato chips", category: "food" },
-    { src: "/images/food-12.jpg", alt: "Namyu Gai Yik crispy fried chicken with house chilli mayo", category: "food" },
-    { src: "/images/food-13.jpg", alt: "Japanese Chicken Katsu with homemade curry and rice", category: "food" },
+    { src: "/images/food-1.jpg", alt: "Sharing plates and fusion dishes at Mana — chicken wings, rice bowls, and pasta spread across the table", category: "food" },
+    { src: "/images/food-2.jpg", alt: "Valentine's Day dinner at Mana — a beautifully plated dish for two", category: "food" },
+    { src: "/images/food-3.jpg", alt: "Behind the pass — a chef carefully plates each dish with precision and care", category: "food" },
+    { src: "/images/food-4.jpg", alt: "Father's Day celebration at Mana — good food, family, and a night worth remembering", category: "food" },
+    { src: "/images/food-5.jpg", alt: "Wagyu Daging Berbola — minced wagyu meatballs in shakshuka sauce with sourdough bread", category: "food" },
+    { src: "/images/food-6.jpg", alt: "Late-night drinks and small bites at Mana — wings, fries, and a cold one", category: "food" },
+    { src: "/images/food-7.jpg", alt: "Spanish Mun Fan Paella — homemade tomato sauce, premium bomba rice, tiger prawns, and clams", category: "food" },
+    { src: "/images/food-8.jpg", alt: "A meal worth sharing — Mana's signature dishes lined up on the table", category: "food" },
+    { src: "/images/food-9.jpg", alt: "Angus Ribeye grilled to perfection with minimal seasoning, served with fermented wasabi", category: "food" },
+    { src: "/images/food-10.jpg", alt: "Fine dining made casual — every plate at Mana is crafted with quiet sophistication", category: "food" },
+    { src: "/images/food-11.jpg", alt: "Casual dining at its best — noodles, rice bowls, and comfort food with a twist", category: "food" },
+    { src: "/images/food-12.jpg", alt: "Date night at Mana — intimate lighting, great wine, and a table worth sitting at", category: "food" },
+    { src: "/images/food-13.jpg", alt: "Japanese Chicken Katsu with panko crust, homemade curry sauce, and steamed rice", category: "food" },
     // ── SPACE ─────────────────────────────────────────────
-    { src: "/images/space-1.jpg", alt: "Mana dining room with bold orange walls, globe pendant lights, and dark wood tables", category: "space" },
-    { src: "/images/space-2.jpg", alt: "Mana dining area with orange walls, grey banquettes, arc lamp, and flowing fabric ceiling drapes", category: "space" },
-    { src: "/images/space-3.jpg", alt: "Mana intimate corner with round globe pendant, orange walls, arc lamp, and cane chairs", category: "space" },
-    { src: "/images/space-4.jpg", alt: "Mana wine shelf with curated bottles, floral arrangement, and artwork", category: "space" },
-    { src: "/images/space-5.jpg", alt: "Mana bar area with dark walls, exposed bottles, and gallery artwork", category: "space" },
-    { src: "/images/space-6.jpg", alt: "Mana private dining table with cane chairs, pendant light, and flowers on windowsill", category: "space" },
+    { src: "/images/space-1.jpg", alt: "Mana celebration dinner — friends gathered around a beautifully set table with warm lighting", category: "space" },
+    { src: "/images/space-2.jpg", alt: "Mana Chinatown KL — exposed concrete walls, dark wood tables, and warm pendant lighting", category: "space" },
+    { src: "/images/space-3.jpg", alt: "Mana heritage interior — blending colonial shophouse architecture with modern industrial design", category: "space" },
+    { src: "/images/space-4.jpg", alt: "Mana hidden gem — bold orange walls, globe pendants, cane chairs, and a texture wall installation", category: "space" },
+    { src: "/images/space-5.jpg", alt: "Mana grand opening — candlelit tables and intimate atmosphere on Jalan Hang Kasturi", category: "space" },
+    { src: "/images/space-6.jpg", alt: "Mana at a glance — familiar flavors refined with quiet sophistication in Chinatown KL", category: "space" },
   ],
 
   // ── Menu ─────────────────────────────────────────────────
