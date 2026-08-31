@@ -101,7 +101,7 @@ export function ParallaxImage({
   }
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className}`}>
+    <div ref={ref} className={`relative overflow-hidden img-fallback ${className}`}>
       <motion.img
         src={src}
         alt={alt}

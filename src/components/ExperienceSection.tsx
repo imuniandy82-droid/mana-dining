@@ -33,7 +33,7 @@ export function ExperienceSection() {
               direction={i === 0 ? "left" : i === 2 ? "right" : "up"}
             >
               <div
-                className={`relative overflow-hidden ${
+                className={`relative overflow-hidden img-fallback ${
                   i === 1
                     ? "aspect-[3/4] sm:-mt-8"
                     : "aspect-[3/4]"

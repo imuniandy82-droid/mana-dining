@@ -19,13 +19,15 @@ function GalleryImage({ src, alt }: { src: string; alt: string }) {
   }
 
   return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"
-      onError={() => setHasError(true)}
-    />
+    <div className="img-fallback">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"
+        onError={() => setHasError(true)}
+      />
+    </div>
   );
 }
 

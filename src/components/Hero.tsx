@@ -22,13 +22,15 @@ function HeroImage({ src }: { src: string }) {
   }
 
   return (
-    <img
-      src={src}
-      alt="Mana restaurant interior"
-      className="h-[120%] w-full object-cover img-warm"
-      fetchPriority="high"
-      onError={() => setHasError(true)}
-    />
+    <div className="h-[120%] w-full img-fallback">
+      <img
+        src={src}
+        alt="Mana restaurant interior"
+        className="h-full w-full object-cover img-warm"
+        fetchPriority="high"
+        onError={() => setHasError(true)}
+      />
+    </div>
   );
 }
 

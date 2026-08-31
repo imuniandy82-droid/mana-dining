@@ -18,13 +18,15 @@ function DishImage({ src, alt }: { src: string; alt: string }) {
   }
 
   return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"
-      onError={() => setHasError(true)}
-    />
+    <div className="h-full w-full img-fallback">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"
+        onError={() => setHasError(true)}
+      />
+    </div>
   );
 }
 
