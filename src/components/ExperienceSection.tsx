@@ -32,15 +32,22 @@ export function ExperienceSection() {
               delay={i * 0.15}
               direction={i === 0 ? "left" : i === 2 ? "right" : "up"}
             >
-              <ParallaxImage
-                src={img.src}
-                alt={img.alt}
-                className={`w-full ${
+              <div
+                className={`relative overflow-hidden ${
                   i === 1
                     ? "aspect-[3/4] sm:-mt-8"
                     : "aspect-[3/4]"
                 }`}
-              />
+              >
+                <ParallaxImage
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full"
+                />
+                {/* Warm amber overlay to match Mana's actual orange-glow atmosphere */}
+                <div className="absolute inset-0 bg-gradient-to-b from-amber-900/20 via-amber-800/10 to-espresso/40 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-amber-700/10" />
+              </div>
             </ScrollReveal>
           ))}
         </div>

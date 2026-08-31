@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "./ScrollReveal";
 import { restaurant } from "@/data/restaurant";
 
-const categories = ["ALL", "FOOD", "SPACE", "PEOPLE"] as const;
+const categories = ["ALL", "FOOD", "SPACE"] as const;
 type Category = (typeof categories)[number];
 
 export function GallerySection() {

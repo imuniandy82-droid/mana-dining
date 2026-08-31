@@ -71,7 +71,7 @@ export const restaurant = {
     "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format",
   introHeading: "A place worth slowing down for.",
   introText:
-    "Nestled along Jalan Hang Kasturi in the heart of Kuala Lumpur, Mana is a place to slow down and savour. A cozy, wood-lined space where the food takes centre stage and the evening unfolds at its own pace. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
+    "Nestled along Jalan Hang Kasturi in the heart of Kuala Lumpur, Mana is a place to slow down and savour. Bold orange walls, flowing fabric drapes, and warm globe lighting create an atmosphere that is at once industrial and intimate. The food takes centre stage and the evening unfolds at its own pace. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
 
   // ── Signature Dishes ─────────────────────────────────────
   signatureDishes: [
@@ -95,19 +95,19 @@ export const restaurant = {
   experienceImages: [
     {
       src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80&auto=format",
-      alt: "Warm restaurant interior with ambient lighting",
+      alt: "Mana dining hall with warm amber lighting and industrial details",
     },
     {
       src: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1200&q=80&auto=format",
-      alt: "Cozy dining space with wooden accents",
+      alt: "Intimate table setting under pendant lights",
     },
     {
       src: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1200&q=80&auto=format",
-      alt: "Intimate evening atmosphere at Mana",
+      alt: "Evening atmosphere with exposed beams and warm glow",
     },
   ],
   experienceText:
-    "Wood-lined walls, warm ambient lighting, and an intimacy that makes every table feel like the best seat in the house. Mana is designed for lingering — for conversations that stretch past dessert, for dates that run late, for meals that become memories.",
+    "Bold orange walls meet flowing fabric drapes overhead. Globe pendants cast a warm amber glow across dark wood tables, while exposed beams and raw concrete remind you this is a space with character. Mana is built for lingering — for conversations that stretch past dessert, for dates that run late, for meals that become memories.",
 
   // ── Story ────────────────────────────────────────────────
   storyImage:
@@ -144,9 +144,9 @@ export const restaurant = {
       category: "food",
     },
     {
-      src: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80&auto=format",
-      alt: "Guests enjoying a meal",
-      category: "people",
+      src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80&auto=format",
+      alt: "Warm pendant lighting over dining tables",
+      category: "space",
     },
     {
       src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80&auto=format",
@@ -169,9 +169,9 @@ export const restaurant = {
       category: "food",
     },
     {
-      src: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&q=80&auto=format",
-      alt: "Friends sharing a meal together",
-      category: "people",
+      src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80&auto=format",
+      alt: "Dark wood tables under warm industrial lighting",
+      category: "space",
     },
     {
       src: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80&auto=format",
