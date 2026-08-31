@@ -100,7 +100,7 @@ export const restaurant = {
     },
     {
       src: "/images/experience-2.png",
-      alt: "Mana bar area with exposed beams, globe pendant lights, and curated artwork",
+      alt: "Mana interior with wooden furniture, exposed beams, and fabric drapes",
     },
     {
       src: "/images/experience-3.png",
@@ -120,17 +120,17 @@ export const restaurant = {
   galleryImages: [
     // ── FOOD ──────────────────────────────────────────────
     { src: "/images/food-1.png", alt: "Spanish Mun Fan Paella with tiger prawns and clams", category: "food" },
-    { src: "/images/food-2.png", alt: "Udang Bakar grilled prawns with herbs on peri sauce", category: "food" },
-    { src: "/images/food-3.png", alt: "Grilled Pata Margret sliced duck breast with sautéed greens", category: "food" },
-    { src: "/images/food-4.png", alt: "Full table spread at Mana with paella, vongole, and signature dishes", category: "food" },
-    { src: "/images/food-5.png", alt: "Namyu Gai Yik crispy fried chicken with house sichuan chilli mayo", category: "food" },
-    { src: "/images/food-6.png", alt: "Aglio Olio with grilled chicken breast and cherry tomatoes", category: "food" },
-    { src: "/images/food-7.png", alt: "Mushroom Cream Pasta topped with egg yolk and truffle oil", category: "food" },
+    { src: "/images/food-2.png", alt: "Paella V2 closeup with prawns and creamy sauce", category: "food" },
+    { src: "/images/food-3.png", alt: "Rendang Croquettes golden fried with fresh parsley", category: "food" },
+    { src: "/images/food-4.png", alt: "Full table spread with chicken katsu, fried rice, and pasta", category: "food" },
+    { src: "/images/food-5.png", alt: "Smoke Spuds shredded potatoes with tartar sauce and ebiko", category: "food" },
+    { src: "/images/food-6.png", alt: "Full table feast with paella, oxtail, vongole pasta, and wine", category: "food" },
+    { src: "/images/food-7.png", alt: "Pan Seared Norwegian Salmon and Vongole pasta with white wine", category: "food" },
     { src: "/images/food-8.png", alt: "Linguine Ala Vongole with fresh clams", category: "food" },
-    { src: "/images/food-9.png", alt: "Oyster Jepun sashimi-grade oysters served on ice", category: "food" },
-    { src: "/images/food-10.png", alt: "Rendang Croquettes golden fried with fresh parsley", category: "food" },
-    { src: "/images/food-11.png", alt: "Smoke Spuds shredded potatoes with tartar sauce and ebiko", category: "food" },
-    { src: "/images/food-12.png", alt: "Angus Ribeye with fried kailan, smoked seasalt and fermented wasabi", category: "food" },
+    { src: "/images/food-9.png", alt: "Grilled Pata Margret sliced duck breast with cherry sauce and greens", category: "food" },
+    { src: "/images/food-10.png", alt: "Angus Ribeye steak with herb chimichurri and roasted potatoes", category: "food" },
+    { src: "/images/food-11.png", alt: "Smoke Spuds with tartar sauce, ebiko, and crispy potato chips", category: "food" },
+    { src: "/images/food-12.png", alt: "Namyu Gai Yik crispy fried chicken with house chilli mayo", category: "food" },
     // ── SPACE ─────────────────────────────────────────────
     { src: "/images/space-1.png", alt: "Mana evening interior with flowing fabric ceiling drapes and globe pendant lights", category: "space" },
     { src: "/images/space-2.png", alt: "Mana dining room with bold orange walls, fabric drapes, and circular window feature", category: "space" },
