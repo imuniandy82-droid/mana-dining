@@ -79,16 +79,16 @@ export const restaurant = {
   // ── Signature Dishes ─────────────────────────────────────
   signatureDishes: [
     {
-      name: "Lamb Ribs",
+      name: "Angus Short Ribs",
       description:
-        "A standout dish — rich, tender, and full of depth. Slow-cooked to perfection, the lamb ribs are a must-try for any visitor.",
-      image: "/images/dish-lamb-ribs.png",
+        "Tomato slow braised 5 hours and finish on grill, side with garlic mashed.",
+      image: "/images/dish-angus-short-ribs.png",
     },
     {
-      name: "Nam Yu Fried Chicken",
+      name: "Spanish Mun Fan (Paella)",
       description:
-        "Crispy, tempura-style coating with a distinctive fermented soy bean flavour. A textural delight that keeps you coming back for more.",
-      image: "/images/dish-fried-chicken.png",
+        "Homemade tomato sauce, premium bomba rice, tiger prawn, clams, good to share with 3 pax.",
+      image: "/images/dish-paella.png",
     },
   ],
 
