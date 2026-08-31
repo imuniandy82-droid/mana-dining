@@ -33,7 +33,7 @@ export const restaurant = {
   directionsUrl: "https://maps.app.goo.gl/b9DoKukdddt8Yin28",
 
   // ── Booking ──────────────────────────────────────────────
-  bookingUrl: "",
+  bookingUrl: "https://api.whatsapp.com/send/?phone=60124538979&text=&type=phone_number&app_absent=0&wame_ctl=1&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAUCLyxwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp2qXiGp9tY0eZEwHLWjtmFKxapsIxBBKtvuqS5gicU2drQFCtKTAZUVHz396_aem_t6QquumJ_sQxShLGgy374w",
 
   // ── Social Media ─────────────────────────────────────────
   social: {
