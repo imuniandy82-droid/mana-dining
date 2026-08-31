@@ -64,11 +64,11 @@ export const restaurant = {
 
   // ── Hero Image ───────────────────────────────────────────
   heroImage:
-    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80&auto=format",
+    "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=80&auto=format",
 
   // ── Introduction ─────────────────────────────────────────
   introImage:
-    "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format",
+    "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=900&q=80&auto=format",
   introHeading: "A place worth slowing down for.",
   introText:
     "Nestled along Jalan Hang Kasturi in the heart of Kuala Lumpur, Mana is a place to slow down and savour. Bold orange walls, flowing fabric drapes, and warm globe lighting create an atmosphere that is at once industrial and intimate. The food takes centre stage and the evening unfolds at its own pace. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
@@ -111,7 +111,7 @@ export const restaurant = {
 
   // ── Story ────────────────────────────────────────────────
   storyImage:
-    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80&auto=format",
+    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80&auto=format",
   storyHeading: "Come for the food.\nStay for the atmosphere.",
   storyText:
     "At Mana, we believe the best meals are shared. Discover dishes crafted with care, savoured in good company, and accompanied by the kind of conversation that only happens when time slows down. This is dining without the rush — unhurried, uncomplicated, and entirely satisfying.",
