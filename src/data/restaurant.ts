@@ -136,7 +136,7 @@ export const restaurant = {
     { src: "/images/space-2.png", alt: "Mana dining room with bold orange walls, fabric drapes, and circular window feature", category: "space" },
     { src: "/images/space-3.png", alt: "Mana bar area with exposed wooden beams, globe pendant lights, and curated artwork", category: "space" },
     { src: "/images/space-4.png", alt: "Mana seating area with orange walls, globe pendant light, and cane-backed chairs", category: "space" },
-    { src: "/images/space-5.png", alt: "Mana daytime dining room with fabric ceiling drapes and warm orange walls", category: "space" },
+    { src: "/images/space-5.png", alt: "Mana dining room with orange walls, exposed beams, fabric ceiling drapes, globe pendants, and dark wood tables", category: "space" },
     { src: "/images/space-6.png", alt: "Mana wine corner with fabric drapes, globe lights, and dining tables", category: "space" },
   ],
 
