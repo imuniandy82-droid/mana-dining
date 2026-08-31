@@ -1,7 +1,36 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { restaurant } from "@/data/restaurant";
+
+function HeroImage({ src }: { src: string }) {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return (
+      <div className="flex h-[120%] w-full items-center justify-center bg-gradient-to-br from-espresso via-espresso-light to-warm-brown/30">
+        <div className="text-center">
+          <span className="block font-serif text-4xl tracking-[0.3em] text-cream/30 sm:text-6xl">
+            MANA
+          </span>
+          <span className="mt-4 block font-sans text-xs tracking-[0.15em] uppercase text-cream/15">
+            Dining in Kuala Lumpur
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt="Mana restaurant interior"
+      className="h-[120%] w-full object-cover img-warm"
+      fetchPriority="high"
+      onError={() => setHasError(true)}
+    />
+  );
+}
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,12 +51,7 @@ export function Hero() {
     >
       {/* Background Image with Parallax */}
       <motion.div className="absolute inset-0" style={{ y: imageY }}>
-        <img
-          src={restaurant.heroImage}
-          alt="Mana restaurant interior"
-          className="h-[120%] w-full object-cover img-warm"
-          fetchPriority="high"
-        />
+        <HeroImage src={restaurant.heroImage} />
       </motion.div>
 
       {/* Dark Gradient Overlay */}

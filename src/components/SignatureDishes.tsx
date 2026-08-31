@@ -1,5 +1,32 @@
+import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
 import { restaurant } from "@/data/restaurant";
+
+function DishImage({ src, alt }: { src: string; alt: string }) {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return (
+      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-espresso via-espresso-light to-warm-brown/30">
+        <div className="text-center">
+          <span className="block font-serif text-xl tracking-[0.15em] text-cream/25 sm:text-2xl">
+            {alt}
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"
+      onError={() => setHasError(true)}
+    />
+  );
+}
 
 export function SignatureDishes() {
   return (
@@ -32,12 +59,7 @@ export function SignatureDishes() {
               <div className="group relative overflow-hidden">
                 {/* Image */}
                 <div className="aspect-[4/5] overflow-hidden sm:aspect-[3/4]">
-                  <img
-                    src={dish.image}
-                    alt={dish.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"
-                  />
+                  <DishImage src={dish.image} alt={dish.name} />
                 </div>
 
                 {/* Overlay gradient */}

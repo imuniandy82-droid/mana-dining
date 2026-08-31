@@ -158,6 +158,15 @@
   background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
 }
 
+/* ── Image Fallback Gradient ────────────────────────── */
+/* Dark moody gradient shown behind images until real photos are loaded */
+.img-fallback {
+  background: linear-gradient(145deg, #1a0e08 0%, #2d1810 30%, #1c1008 60%, #0f0a06 100%);
+}
+.img-fallback-light {
+  background: linear-gradient(145deg, #f5ebe0 0%, #e8d5c4 40%, #d4c0a8 100%);
+}
+
 /* ── Image Sepia Warmth ────────────────────────────── */
 .img-warm {
   filter: sepia(0.08) saturate(0.95) brightness(0.95);

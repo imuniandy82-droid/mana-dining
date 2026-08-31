@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 type Direction = "up" | "down" | "left" | "right" | "none";
@@ -67,7 +67,7 @@ export function ScrollReveal({
   );
 }
 
-/* Parallax image wrapper */
+/* Parallax image wrapper with error handling */
 export function ParallaxImage({
   src,
   alt,
@@ -78,9 +78,30 @@ export function ParallaxImage({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return (
+      <div
+        ref={ref}
+        className={`overflow-hidden ${className}`}
+      >
+        <div className="flex h-[120%] w-full items-center justify-center bg-gradient-to-br from-espresso via-espresso-light to-warm-brown/30">
+          <div className="text-center">
+            <span className="block font-serif text-2xl tracking-[0.2em] text-cream/30 sm:text-3xl">
+              MANA
+            </span>
+            <span className="mt-2 block font-sans text-[10px] tracking-[0.15em] uppercase text-cream/15">
+              {alt}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div ref={ref} className={`overflow-hidden ${className}`}>
+    <div ref={ref} className={`relative overflow-hidden ${className}`}>
       <motion.img
         src={src}
         alt={alt}
@@ -90,6 +111,7 @@ export function ParallaxImage({
         whileInView={{ scale: 1 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+        onError={() => setHasError(true)}
       />
     </div>
   );
