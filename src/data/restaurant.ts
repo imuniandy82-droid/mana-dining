@@ -96,49 +96,49 @@ export const restaurant = {
   experienceImages: [
     {
       src: "/images/experience-1.jpg",
-      alt: "Mana — where the story begins. From a colonial trading street to your new favourite table.",
+      alt: "Mana grand opening — where refined flavours meet timeless ambience on Jalan Hang Kasturi",
     },
     {
       src: "/images/experience-2.jpg",
-      alt: "Every plate at Mana tells a story — fresh ingredients, bold flavours, and quiet craft.",
+      alt: "Intimate corners, warm lighting, curated bites — wine and atmosphere worlds away from the bustle outside",
     },
     {
       src: "/images/experience-3.jpg",
-      alt: "The walls remember. Exposed concrete and raw texture give Mana its honest character.",
+      alt: "An atmosphere designed to be shared, for those who savour both the moment and the company",
     },
   ],
   experienceText:
-    "Mana lives inside a pre-war shophouse on Jalan Hang Kasturi — once a place for trade, now a place for the table. Every wall tells a story, every dish carries intention, and every evening unfolds at its own pace. This is dining without the rush — unhurried, uncomplicated, and entirely satisfying.",
+    "Mana lives inside a pre-war shophouse on Jalan Hang Kasturi — once a place for trade, now a place for the table. Intimate corners, warm lighting, and curated bites create an atmosphere worlds away from the bustle outside. Every wall tells a story, every dish carries intention, and every evening unfolds at its own pace.",
 
   // ── Story ────────────────────────────────────────────────
   storyImage: "/images/story.jpg",
   storyHeading: "Come for the food.\nStay for the atmosphere.",
   storyText:
-    "At Mana, the best meals are shared. Dishes crafted with care, savoured in good company, paired with the kind of conversation that only happens when time slows down. No rush. No pretence. Just good food, good people, and a place worth coming back to.",
+    "Familiar comfort, reimagined with prestige. Rich, melt-in-your-mouth texture with a bold depth of flavour. At Mana, the best meals are shared — dishes crafted with care, savoured in good company, paired with the kind of conversation that only happens when time slows down.",
 
   // ── Gallery ──────────────────────────────────────────────
   galleryImages: [
     // ── FOOD ──────────────────────────────────────────────
-    { src: "/images/food-1.jpg", alt: "Sharing plates and fusion dishes at Mana — chicken wings, rice bowls, and pasta spread across the table", category: "food" },
-    { src: "/images/food-2.jpg", alt: "Valentine's Day dinner at Mana — a beautifully plated dish for two", category: "food" },
-    { src: "/images/food-3.jpg", alt: "Behind the pass — a chef carefully plates each dish with precision and care", category: "food" },
-    { src: "/images/food-4.jpg", alt: "Father's Day celebration at Mana — good food, family, and a night worth remembering", category: "food" },
-    { src: "/images/food-5.jpg", alt: "Wagyu Daging Berbola — minced wagyu meatballs in shakshuka sauce with sourdough bread", category: "food" },
-    { src: "/images/food-6.jpg", alt: "Late-night drinks and small bites at Mana — wings, fries, and a cold one", category: "food" },
-    { src: "/images/food-7.jpg", alt: "Spanish Mun Fan Paella — homemade tomato sauce, premium bomba rice, tiger prawns, and clams", category: "food" },
-    { src: "/images/food-8.jpg", alt: "A meal worth sharing — Mana's signature dishes lined up on the table", category: "food" },
-    { src: "/images/food-9.jpg", alt: "Angus Ribeye grilled to perfection with minimal seasoning, served with fermented wasabi", category: "food" },
-    { src: "/images/food-10.jpg", alt: "Fine dining made casual — every plate at Mana is crafted with quiet sophistication", category: "food" },
-    { src: "/images/food-11.jpg", alt: "Casual dining at its best — noodles, rice bowls, and comfort food with a twist", category: "food" },
-    { src: "/images/food-12.jpg", alt: "Date night at Mana — intimate lighting, great wine, and a table worth sitting at", category: "food" },
-    { src: "/images/food-13.jpg", alt: "Japanese Chicken Katsu with panko crust, homemade curry sauce, and steamed rice", category: "food" },
+    { src: "/images/food-1.jpg", alt: "Experience our new creations — five new dishes each with its own story to tell", category: "food" },
+    { src: "/images/food-2.jpg", alt: "What's your verdict? A Culinary Purist or a Flavor Explorer?", category: "food" },
+    { src: "/images/food-3.jpg", alt: "Behold our glorious paella — bringing the taste of Spain to your table", category: "food" },
+    { src: "/images/food-4.jpg", alt: "Inspiration of Pulled Lamb Paella paired with Don Mendo Reserva wine", category: "food" },
+    { src: "/images/food-5.jpg", alt: "Some dinners are about the food — cocktails and Chef Jeff's kitchen creations", category: "food" },
+    { src: "/images/food-6.jpg", alt: "The team showed up, the kitchen delivered — a night of great food and company", category: "food" },
+    { src: "/images/food-7.jpg", alt: "Wagyu Daging Berbola starter — fragrant wok-fried truffle rice with marinated wagyu and holy basil", category: "food" },
+    { src: "/images/food-8.jpg", alt: "At Mesa on 51, the Mero brings a clean, grilled grouper cooked to retain its natural moisture", category: "food" },
+    { src: "/images/food-9.jpg", alt: "Canelones de Wagyu y Trufa — a rich, slow-braised wagyu pasta dish", category: "food" },
+    { src: "/images/food-10.jpg", alt: "Three new pasta dishes arrive at Mana — where new flavors meet the table", category: "food" },
+    { src: "/images/food-11.jpg", alt: "Chechen Ravioli — spicy and hearty, an explosion of flavour in every bite", category: "food" },
+    { src: "/images/food-12.jpg", alt: "Our dream lamb chops crusted in za'atar with creamy mashed potatoes and asparagus", category: "food" },
+    { src: "/images/food-13.jpg", alt: "A little change of scenery — the warmth, good food, and familiar atmosphere", category: "food" },
     // ── SPACE ─────────────────────────────────────────────
-    { src: "/images/space-1.jpg", alt: "Mana celebration dinner — friends gathered around a beautifully set table with warm lighting", category: "space" },
-    { src: "/images/space-2.jpg", alt: "Mana Chinatown KL — exposed concrete walls, dark wood tables, and warm pendant lighting", category: "space" },
-    { src: "/images/space-3.jpg", alt: "Mana heritage interior — blending colonial shophouse architecture with modern industrial design", category: "space" },
-    { src: "/images/space-4.jpg", alt: "Mana hidden gem — bold orange walls, globe pendants, cane chairs, and a texture wall installation", category: "space" },
-    { src: "/images/space-5.jpg", alt: "Mana grand opening — candlelit tables and intimate atmosphere on Jalan Hang Kasturi", category: "space" },
-    { src: "/images/space-6.jpg", alt: "Mana at a glance — familiar flavors refined with quiet sophistication in Chinatown KL", category: "space" },
+    { src: "/images/space-1.jpg", alt: "Hidden fusion gem in KL — Mana Dining on Jalan Hang Kasturi", category: "space" },
+    { src: "/images/space-2.jpg", alt: "Chinatown's new Mana — a pan-Asian lunch spot with punch on Hang Kasturi Road", category: "space" },
+    { src: "/images/space-3.jpg", alt: "An evening gathered around the table — discover a new favourite at Mana Dining", category: "space" },
+    { src: "/images/space-4.jpg", alt: "Date night at Mana — a hidden dining spot with cosy ambience and beautiful interiors", category: "space" },
+    { src: "/images/space-5.jpg", alt: "Valentine's at Mana — celebrate love with refined flavours and timeless ambience", category: "space" },
+    { src: "/images/space-6.jpg", alt: "Mana at a glance — the warmth, good food, and familiar atmosphere in Chinatown KL", category: "space" },
   ],
 
   // ── Menu ─────────────────────────────────────────────────
