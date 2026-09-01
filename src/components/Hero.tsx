@@ -4,7 +4,6 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { ChevronDown } from "lucide-react";
 import { restaurant } from "@/data/restaurant";
-import { resolveSiteImageUrl } from "@/components/SiteImage"
 
 function HeroImage({ src }: { src: string }) {
   const [hasError, setHasError] = useState(false);
@@ -38,11 +37,11 @@ function HeroImage({ src }: { src: string }) {
 }
 
 function HeroWithUpload() {
-  const images = useQuery(api.siteImages.list);
-  const imageMap = images
-    ? new Map(images    .map((i: any) => [i.slot, i]))
-    : null;
-  const src = resolveSiteImageUrl("hero", restaurant.heroImage, imageMap as any);
+  const image = useQuery(api.siteImages.getBySlot, { slot: "hero" });
+  const src =
+    image && "data" in image
+      ? `data:${image.mimeType};base64,${image.data}`
+      : restaurant.heroImage;
   return <HeroImage src={src} />;
 }
 

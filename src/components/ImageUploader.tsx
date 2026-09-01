@@ -13,11 +13,13 @@ interface ImageUploaderProps {
   onUploaded?: () => void;
 }
 
-/** Compress and resize an image file to fit within Convex's document size limit. */
+/** Compress and resize an image file to fit within Convex's document size limit.
+ *  Target: final JPEG under ~400 KB so the base64 doc stays under 600 KB.
+ */
 function compressImage(
   file: File,
-  maxDim = 1200,
-  quality = 0.8,
+  maxDim = 1000,
+  quality = 0.7,
 ): Promise<{ data: string; mimeType: string }> {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -27,6 +29,7 @@ function compressImage(
       URL.revokeObjectURL(url);
 
       let { width, height } = img;
+      // Aggressively cap dimension so even tall portraits stay small
       if (width > maxDim || height > maxDim) {
         if (width > height) {
           height = Math.round((height / width) * maxDim);
