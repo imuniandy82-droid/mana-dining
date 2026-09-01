@@ -3,7 +3,6 @@ import { ScrollReveal } from "./ScrollReveal";
 import { restaurant } from "@/data/restaurant";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { resolveSiteImageUrl } from "@/components/SiteImage"
 
 const DISH_SLOTS: Record<string, string> = {
   "Angus Short Ribs": "dish-angus-short-ribs",
@@ -12,13 +11,12 @@ const DISH_SLOTS: Record<string, string> = {
 
 function DishImage({ src, alt }: { src: string; alt: string }) {
   const [hasError, setHasError] = useState(false);
-  const images = useQuery(api.siteImages.list);
-  const imageMap = images ? new Map(images    .map((i: any) => [i.slot, i]))
-    : null;
   const slot = DISH_SLOTS[alt] || "";
-  const resolved = slot
-    ? resolveSiteImageUrl(slot, src, imageMap as any)
-    : src;
+  const image = useQuery(api.siteImages.getBySlot, slot ? { slot } : "skip" as any);
+  const resolved =
+    image && "data" in image
+      ? `data:${image.mimeType};base64,${image.data}`
+      : src;
 
   if (hasError) {
     return (

@@ -2,7 +2,6 @@ import { ScrollReveal, ParallaxImage } from "./ScrollReveal";
 import { restaurant } from "@/data/restaurant";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { resolveSiteImageUrl } from "@/components/SiteImage"
 
 function ExperienceImage({
   slot,
@@ -15,10 +14,11 @@ function ExperienceImage({
   alt: string;
   className?: string;
 }) {
-  const images = useQuery(api.siteImages.list);
-  const imageMap = images ? new Map(images    .map((i: any) => [i.slot, i]))
-    : null;
-  const resolved = resolveSiteImageUrl(slot, src, imageMap as any);
+  const image = useQuery(api.siteImages.getBySlot, { slot });
+  const resolved =
+    image && "data" in image
+      ? `data:${image.mimeType};base64,${image.data}`
+      : src;
   return (
     <ParallaxImage
       src={resolved}
