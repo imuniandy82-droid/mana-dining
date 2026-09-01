@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/button";
-import { Trash2, Upload } from "lucide-react";
+import { Trash2, Upload, Check, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { SiteImage, SlotKey } from "@/hooks/use-site-images";
 import { getSlotInfo } from "@/hooks/use-site-images";
@@ -13,17 +13,61 @@ interface ImageUploaderProps {
   onUploaded?: () => void;
 }
 
-function fileToBase64(file: File): Promise<{ data: string; mimeType: string }> {
+/** Compress and resize an image file to fit within Convex's document size limit. */
+function compressImage(
+  file: File,
+  maxDim = 1200,
+  quality = 0.8,
+): Promise<{ data: string; mimeType: string }> {
   return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      const mimeType = file.type || "image/jpeg";
-      const base64 = result.split(",")[1] || result;
-      resolve({ data: base64, mimeType });
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+
+      let { width, height } = img;
+      if (width > maxDim || height > maxDim) {
+        if (width > height) {
+          height = Math.round((height / width) * maxDim);
+          width = maxDim;
+        } else {
+          width = Math.round((width / height) * maxDim);
+          height = maxDim;
+        }
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return reject(new Error("Canvas not supported"));
+
+      ctx.drawImage(img, 0, 0, width, height);
+
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) return reject(new Error("Compression failed"));
+          const reader = new FileReader();
+          reader.onload = () => {
+            const result = reader.result as string;
+            const base64 = result.split(",")[1] || result;
+            resolve({ data: base64, mimeType: "image/jpeg" });
+          };
+          reader.onerror = () => reject(reader.error);
+          reader.readAsDataURL(blob);
+        },
+        "image/jpeg",
+        quality,
+      );
     };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
+
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Failed to load image"));
+    };
+
+    img.src = url;
   });
 }
 
@@ -57,9 +101,12 @@ const SLOT_ORDER_MAP: Record<string, number> = {
   "space-6": 55,
 };
 
+type UploadStatus = "idle" | "compressing" | "uploading" | "success" | "error";
+
 export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
   const [isDragOver, setIsDragOver] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
+  const [status, setStatus] = useState<UploadStatus>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -72,13 +119,23 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
   const handleFile = useCallback(
     async (file: File) => {
       if (!file.type.startsWith("image/")) {
-        alert("Please select an image file");
+        setErrorMsg("Please select an image file");
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 3000);
         return;
       }
-      setIsUploading(true);
+
+      setStatus("compressing");
+      setErrorMsg(null);
+
       try {
-        const { data, mimeType } = await fileToBase64(file);
+        // Compress the image to fit within Convex limits
+        const { data, mimeType } = await compressImage(file);
+
+        // Show preview while uploading
         setPreview(`data:${mimeType};base64,${data}`);
+        setStatus("uploading");
+
         await uploadMutation({
           slot,
           alt: info.label,
@@ -87,13 +144,24 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
           mimeType,
           order: SLOT_ORDER_MAP[slot] ?? 99,
         });
+
         setPreview(null);
+        setStatus("success");
         onUploaded?.();
+
+        // Clear success after 2s
+        setTimeout(() => setStatus("idle"), 2000);
       } catch (err) {
         console.error("Upload failed:", err);
         setPreview(null);
-      } finally {
-        setIsUploading(false);
+        setStatus("error");
+        setErrorMsg(
+          err instanceof Error ? err.message : "Upload failed. Try a smaller image.",
+        );
+        setTimeout(() => {
+          setStatus("idle");
+          setErrorMsg(null);
+        }, 4000);
       }
     },
     [slot, info, uploadMutation, onUploaded],
@@ -119,12 +187,33 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
   }, []);
 
   const handleDelete = useCallback(async () => {
-    await removeMutation({ slot });
-    onUploaded?.();
+    try {
+      await removeMutation({ slot });
+      setStatus("success");
+      onUploaded?.();
+      setTimeout(() => setStatus("idle"), 2000);
+    } catch (err) {
+      console.error("Delete failed:", err);
+      setStatus("error");
+      setErrorMsg("Failed to delete");
+      setTimeout(() => {
+        setStatus("idle");
+        setErrorMsg(null);
+      }, 3000);
+    }
   }, [slot, removeMutation, onUploaded]);
 
   const imageUrl =
     preview || (image ? `data:${image.mimeType};base64,${image.data}` : null);
+
+  const statusLabel =
+    status === "compressing"
+      ? "Compressing…"
+      : status === "uploading"
+        ? "Uploading…"
+        : status === "success"
+          ? "Done!"
+          : null;
 
   return (
     <div className="group relative">
@@ -133,14 +222,20 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
           "relative aspect-[4/3] overflow-hidden rounded-lg border-2 border-dashed transition-all duration-200",
           isDragOver
             ? "border-primary bg-primary/5"
-            : hasImage
-              ? "border-border"
-              : "border-muted-foreground/25 hover:border-muted-foreground/50",
+            : status === "error"
+              ? "border-red-500/50"
+              : hasImage
+                ? "border-border"
+                : "border-muted-foreground/25 hover:border-muted-foreground/50",
         )}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        onClick={() => inputRef.current?.click()}
+        onClick={() => {
+          if (status === "idle" || status === "success" || status === "error") {
+            inputRef.current?.click();
+          }
+        }}
       >
         {imageUrl ? (
           <>
@@ -155,6 +250,7 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
                 size="sm"
                 variant="secondary"
                 className="gap-1.5"
+                disabled={status === "compressing" || status === "uploading"}
                 onClick={(e) => {
                   e.stopPropagation();
                   inputRef.current?.click();
@@ -167,6 +263,7 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
                 size="sm"
                 variant="destructive"
                 className="gap-1.5"
+                disabled={status === "compressing" || status === "uploading"}
                 onClick={(e) => {
                   e.stopPropagation();
                   handleDelete();
@@ -185,11 +282,20 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
           </div>
         )}
 
-        {isUploading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-background/80">
-            <div className="animate-pulse text-sm text-muted-foreground">
-              Uploading…
+        {/* Status overlay */}
+        {(status === "compressing" || status === "uploading") && (
+          <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+            <div className="flex flex-col items-center gap-2">
+              <div className="size-5 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+              <span className="text-xs text-muted-foreground">{statusLabel}</span>
             </div>
+          </div>
+        )}
+
+        {/* Success overlay */}
+        {status === "success" && !imageUrl && (
+          <div className="absolute inset-0 flex items-center justify-center bg-background/80">
+            <Check className="size-8 text-green-500" />
           </div>
         )}
 
@@ -210,6 +316,22 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
         <span className="text-xs font-medium text-foreground">{info.label}</span>
         <span className="text-[10px] text-muted-foreground">{slot}</span>
       </div>
+
+      {/* Error message */}
+      {status === "error" && errorMsg && (
+        <div className="mt-1.5 flex items-center gap-1.5 rounded-md bg-red-500/10 px-2 py-1.5">
+          <AlertCircle className="size-3 shrink-0 text-red-500" />
+          <span className="text-[11px] text-red-500">{errorMsg}</span>
+        </div>
+      )}
+
+      {/* Success flash */}
+      {status === "success" && (
+        <div className="mt-1.5 flex items-center gap-1.5 rounded-md bg-green-500/10 px-2 py-1.5">
+          <Check className="size-3 shrink-0 text-green-500" />
+          <span className="text-[11px] text-green-500">Uploaded!</span>
+        </div>
+      )}
     </div>
   );
 }
