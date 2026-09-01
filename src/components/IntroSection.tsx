@@ -1,5 +1,22 @@
 import { ScrollReveal, ParallaxImage } from "./ScrollReveal";
 import { restaurant } from "@/data/restaurant";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { resolveSiteImageUrl } from "@/components/SiteImage"
+
+function IntroImage() {
+  const images = useQuery(api.siteImages.list);
+  const imageMap = images ? new Map(images    .map((i: any) => [i.slot, i]))
+    : null;
+  const src = resolveSiteImageUrl("intro", restaurant.introImage, imageMap as any);
+  return (
+    <ParallaxImage
+      src={src}
+      alt="Elegant plated dish at Mana restaurant"
+      className="aspect-[4/5] w-full"
+    />
+  );
+}
 
 export function IntroSection() {
   return (
@@ -41,11 +58,7 @@ export function IntroSection() {
 
         {/* Image */}
         <ScrollReveal direction="right" delay={0.2} className="relative order-1 lg:order-2">
-          <ParallaxImage
-            src={restaurant.introImage}
-            alt="Elegant plated dish at Mana restaurant"
-            className="aspect-[4/5] w-full"
-          />
+          <IntroImage />
           {/* Decorative frame corner */}
           <div className="pointer-events-none absolute -bottom-3 -right-3 h-20 w-20 border-b border-r border-gold/20" />
         </ScrollReveal>

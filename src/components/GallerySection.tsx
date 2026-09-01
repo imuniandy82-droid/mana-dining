@@ -2,9 +2,24 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "./ScrollReveal";
 import { restaurant } from "@/data/restaurant";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { resolveSiteImageUrl } from "@/components/SiteImage"
+
+function slotFromSrc(src: string): string {
+  const match = src.match(/\/(\w+[-\w]*)\.\w+$/);
+  return match ? match[1] : "";
+}
 
 function GalleryImage({ src, alt }: { src: string; alt: string }) {
   const [hasError, setHasError] = useState(false);
+  const images = useQuery(api.siteImages.list);
+  const imageMap = images ? new Map(images    .map((i: any) => [i.slot, i]))
+    : null;
+  const slot = slotFromSrc(src);
+  const resolved = slot
+    ? resolveSiteImageUrl(slot, src, imageMap as any)
+    : src;
 
   if (hasError) {
     return (
@@ -21,7 +36,7 @@ function GalleryImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="img-fallback">
       <img
-        src={src}
+        src={resolved}
         alt={alt}
         loading="lazy"
         className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"

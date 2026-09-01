@@ -1,9 +1,24 @@
 import { useState } from "react";
 import { ScrollReveal } from "./ScrollReveal";
 import { restaurant } from "@/data/restaurant";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { resolveSiteImageUrl } from "@/components/SiteImage"
+
+const DISH_SLOTS: Record<string, string> = {
+  "Angus Short Ribs": "dish-angus-short-ribs",
+  "Spanish Mun Fan (Paella)": "dish-paella",
+};
 
 function DishImage({ src, alt }: { src: string; alt: string }) {
   const [hasError, setHasError] = useState(false);
+  const images = useQuery(api.siteImages.list);
+  const imageMap = images ? new Map(images    .map((i: any) => [i.slot, i]))
+    : null;
+  const slot = DISH_SLOTS[alt] || "";
+  const resolved = slot
+    ? resolveSiteImageUrl(slot, src, imageMap as any)
+    : src;
 
   if (hasError) {
     return (
@@ -20,7 +35,7 @@ function DishImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="h-full w-full img-fallback">
       <img
-        src={src}
+        src={resolved}
         alt={alt}
         loading="lazy"
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"

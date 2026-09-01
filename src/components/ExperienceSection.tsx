@@ -1,5 +1,32 @@
 import { ScrollReveal, ParallaxImage } from "./ScrollReveal";
 import { restaurant } from "@/data/restaurant";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { resolveSiteImageUrl } from "@/components/SiteImage"
+
+function ExperienceImage({
+  slot,
+  src,
+  alt,
+  className,
+}: {
+  slot: string;
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  const images = useQuery(api.siteImages.list);
+  const imageMap = images ? new Map(images    .map((i: any) => [i.slot, i]))
+    : null;
+  const resolved = resolveSiteImageUrl(slot, src, imageMap as any);
+  return (
+    <ParallaxImage
+      src={resolved}
+      alt={alt}
+      className={className}
+    />
+  );
+}
 
 export function ExperienceSection() {
   return (
@@ -39,7 +66,8 @@ export function ExperienceSection() {
                     : "aspect-[3/4]"
                 }`}
               >
-                <ParallaxImage
+                <ExperienceImage
+                  slot={`experience-${i + 1}`}
                   src={img.src}
                   alt={img.alt}
                   className="w-full h-full"

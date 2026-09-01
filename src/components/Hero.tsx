@@ -1,7 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 import { ChevronDown } from "lucide-react";
 import { restaurant } from "@/data/restaurant";
+import { resolveSiteImageUrl } from "@/components/SiteImage"
 
 function HeroImage({ src }: { src: string }) {
   const [hasError, setHasError] = useState(false);
@@ -34,6 +37,15 @@ function HeroImage({ src }: { src: string }) {
   );
 }
 
+function HeroWithUpload() {
+  const images = useQuery(api.siteImages.list);
+  const imageMap = images
+    ? new Map(images    .map((i: any) => [i.slot, i]))
+    : null;
+  const src = resolveSiteImageUrl("hero", restaurant.heroImage, imageMap as any);
+  return <HeroImage src={src} />;
+}
+
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -53,7 +65,7 @@ export function Hero() {
     >
       {/* Background Image with Parallax */}
       <motion.div className="absolute inset-0" style={{ y: imageY }}>
-        <HeroImage src={restaurant.heroImage} />
+        <HeroWithUpload />
       </motion.div>
 
       {/* Dark Gradient Overlay */}

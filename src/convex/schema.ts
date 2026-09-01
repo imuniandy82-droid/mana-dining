@@ -34,10 +34,15 @@ const schema = defineSchema(
 
     // add other tables here
 
-    // tableName: defineTable({
-    //   ...
-    //   // table fields
-    // }).index("by_field", ["field"])
+    // ── Site Images ──────────────────────────────────────────────
+    siteImages: defineTable({
+      slot: v.string(),
+      alt: v.string(),
+      category: v.string(),
+      data: v.string(),
+      mimeType: v.string(),
+      order: v.number(),
+    }).index("by_slot", ["slot"])
   },
   {
     schemaValidation: false,

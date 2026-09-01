@@ -1,5 +1,22 @@
 import { ScrollReveal, ParallaxImage } from "./ScrollReveal";
 import { restaurant } from "@/data/restaurant";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { resolveSiteImageUrl } from "@/components/SiteImage"
+
+function StoryImage() {
+  const images = useQuery(api.siteImages.list);
+  const imageMap = images ? new Map(images    .map((i: any) => [i.slot, i]))
+    : null;
+  const src = resolveSiteImageUrl("story", restaurant.storyImage, imageMap as any);
+  return (
+    <ParallaxImage
+      src={src}
+      alt="Mana restaurant atmosphere"
+      className="aspect-[4/5] w-full"
+    />
+  );
+}
 
 export function StorySection() {
   return (
@@ -7,11 +24,7 @@ export function StorySection() {
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-10">
         {/* Image */}
         <ScrollReveal direction="left">
-          <ParallaxImage
-            src={restaurant.storyImage}
-            alt="Mana restaurant atmosphere"
-            className="aspect-[4/5] w-full"
-          />
+          <StoryImage />
         </ScrollReveal>
 
         {/* Text */}
