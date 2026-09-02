@@ -70,6 +70,19 @@ export const remove = mutation({
   },
 });
 
+export const clearAll = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) throw new Error("Not authenticated");
+    const all = await ctx.db.query("siteImages").collect();
+    for (const doc of all) {
+      await ctx.db.delete(doc._id);
+    }
+    return all.length;
+  },
+});
+
 export const bulkUpload = mutation({
   args: {
     images: v.array(
