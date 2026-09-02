@@ -2,14 +2,11 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 export type SiteImage = {
-  _id: string;
-  _creationTime: number;
   slot: string;
   alt: string;
   category: string;
-  data: string;
-  mimeType: string;
   order: number;
+  url: string | null;
 };
 
 const IMAGE_SLOTS = {
@@ -19,10 +16,7 @@ const IMAGE_SLOTS = {
   "experience-1": { label: "Experience Photo 1", category: "space" },
   "experience-2": { label: "Experience Photo 2", category: "space" },
   "experience-3": { label: "Experience Photo 3", category: "space" },
-  "dish-angus-short-ribs": {
-    label: "Angus Short Ribs Dish",
-    category: "food",
-  },
+  "dish-angus-short-ribs": { label: "Angus Short Ribs Dish", category: "food" },
   "dish-paella": { label: "Paella Dish", category: "food" },
   "food-1": { label: "Food Photo 1", category: "food" },
   "food-2": { label: "Food Photo 2", category: "food" },
@@ -48,14 +42,9 @@ const IMAGE_SLOTS = {
 export type SlotKey = keyof typeof IMAGE_SLOTS;
 
 export const SLOT_ORDER: SlotKey[] = [
-  "hero",
-  "intro",
-  "story",
-  "experience-1",
-  "experience-2",
-  "experience-3",
-  "dish-angus-short-ribs",
-  "dish-paella",
+  "hero", "intro", "story",
+  "experience-1", "experience-2", "experience-3",
+  "dish-angus-short-ribs", "dish-paella",
   ...Array.from({ length: 13 }, (_, i) => `food-${i + 1}` as SlotKey),
   ...Array.from({ length: 6 }, (_, i) => `space-${i + 1}` as SlotKey),
 ];
@@ -69,7 +58,13 @@ export function useSiteImages() {
   if (!raw) return null;
   const map = new Map<string, SiteImage>();
   for (const img of raw) {
-    map.set(img.slot, img as SiteImage);
+    const d = img as any;
+    const url = d.data && d.mimeType ? `data:${d.mimeType};base64,${d.data}` : null;
+    map.set(img.slot, { slot: img.slot, alt: img.alt, category: img.category, order: img.order, url });
   }
   return map;
+}
+
+export function useSiteImage(slot: string) {
+  return useQuery(api.siteImages.getBySlot, { slot });
 }

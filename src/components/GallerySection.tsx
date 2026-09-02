@@ -5,7 +5,7 @@ import { restaurant } from "@/data/restaurant";
 import { SiteImage } from "@/components/SiteImage";
 
 function slotFromSrc(src: string): string {
-  const match = src.match(/\/(\w+[-\w]*)\.\w+$/);
+  const match = src.match(/\/([\w-]+)\.\w+$/);
   return match ? match[1] : "";
 }
 
@@ -70,7 +70,6 @@ export function GallerySection() {
       <div className="grain-overlay absolute inset-0" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-        {/* Header */}
         <ScrollReveal>
           <div className="mb-12 text-center">
             <div className="vintage-divider mx-auto mb-8 max-w-xs">
@@ -84,7 +83,6 @@ export function GallerySection() {
           </div>
         </ScrollReveal>
 
-        {/* Filter Tabs */}
         <ScrollReveal delay={0.1}>
           <div className="mb-10 flex flex-wrap items-center justify-center gap-1 sm:gap-2">
             {categories.map((cat) => (
@@ -103,7 +101,6 @@ export function GallerySection() {
           </div>
         </ScrollReveal>
 
-        {/* Masonry Grid */}
         <motion.div
           layout
           className="columns-1 gap-4 sm:columns-2 lg:columns-3"
@@ -121,7 +118,6 @@ export function GallerySection() {
               >
                 <div className="group relative overflow-hidden">
                   <GalleryImage src={img.src} alt={img.alt} />
-                  {/* Hover overlay */}
                   <div className="absolute inset-0 bg-espresso/0 transition-all duration-500 group-hover:bg-espresso/40" />
                   <div className="absolute inset-0 flex items-end p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     <span className="font-serif text-sm italic text-cream/80">

@@ -6,34 +6,15 @@ interface SiteImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   fallbackSrc: string;
 }
 
-function toDataUrl(data: string, mimeType: string): string {
-  return `data:${mimeType};base64,${data}`;
-}
-
 export function SiteImage({
   slot,
   fallbackSrc,
   alt,
   ...props
 }: SiteImageProps) {
-  const image = useQuery(api.siteImages.getBySlot, { slot });
-
-  const src =
-    image && "data" in image
-      ? toDataUrl(image.data, image.mimeType)
-      : fallbackSrc;
-
+  const image = useQuery(api.siteImages.getBySlot, { slot }) as any;
+  const src = image?.data && image?.mimeType
+    ? `data:${image.mimeType};base64,${image.data}`
+    : fallbackSrc;
   return <img src={src} alt={alt ?? ""} {...props} />;
-}
-
-export function resolveSiteImageUrl(
-  slot: string,
-  staticPath: string,
-  images: Map<string, { data: string; mimeType: string }> | null,
-): string {
-  const img = images?.get(slot);
-  if (img && "data" in img) {
-    return `data:${img.mimeType};base64,${img.data}`;
-  }
-  return staticPath;
 }

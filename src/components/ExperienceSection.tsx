@@ -14,11 +14,10 @@ function ExperienceImage({
   alt: string;
   className?: string;
 }) {
-  const image = useQuery(api.siteImages.getBySlot, { slot });
-  const resolved =
-    image && "data" in image
-      ? `data:${image.mimeType};base64,${image.data}`
-      : src;
+  const image = useQuery(api.siteImages.getBySlot, { slot }) as any;
+  const resolved = image?.data && image?.mimeType
+    ? `data:${image.mimeType};base64,${image.data}`
+    : src;
   return (
     <ParallaxImage
       src={resolved}
@@ -37,7 +36,6 @@ export function ExperienceSection() {
       <div className="grain-overlay absolute inset-0" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-        {/* Header */}
         <ScrollReveal>
           <div className="mb-16 text-center lg:mb-20">
             <div className="vintage-divider mx-auto mb-8 max-w-xs">
@@ -51,7 +49,6 @@ export function ExperienceSection() {
           </div>
         </ScrollReveal>
 
-        {/* Images Grid with staggered reveal */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
           {restaurant.experienceImages.map((img, i) => (
             <ScrollReveal
@@ -61,9 +58,7 @@ export function ExperienceSection() {
             >
               <div
                 className={`relative overflow-hidden img-fallback ${
-                  i === 1
-                    ? "aspect-[3/4] sm:-mt-8"
-                    : "aspect-[3/4]"
+                  i === 1 ? "aspect-[3/4] sm:-mt-8" : "aspect-[3/4]"
                 }`}
               >
                 <ExperienceImage
@@ -72,7 +67,6 @@ export function ExperienceSection() {
                   alt={img.alt}
                   className="w-full h-full"
                 />
-                {/* Warm amber overlay to match Mana's actual orange-glow atmosphere */}
                 <div className="absolute inset-0 bg-gradient-to-b from-amber-900/20 via-amber-800/10 to-espresso/40 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-amber-700/10" />
               </div>
@@ -80,7 +74,6 @@ export function ExperienceSection() {
           ))}
         </div>
 
-        {/* Description */}
         <ScrollReveal delay={0.3}>
           <div className="mx-auto mt-16 max-w-2xl text-center lg:mt-20">
             <p className="font-serif text-xl leading-relaxed text-cream/70 italic sm:text-2xl">

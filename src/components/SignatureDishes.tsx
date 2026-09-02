@@ -12,11 +12,13 @@ const DISH_SLOTS: Record<string, string> = {
 function DishImage({ src, alt }: { src: string; alt: string }) {
   const [hasError, setHasError] = useState(false);
   const slot = DISH_SLOTS[alt] || "";
-  const image = useQuery(api.siteImages.getBySlot, slot ? { slot } : "skip" as any);
-  const resolved =
-    image && "data" in image
-      ? `data:${image.mimeType};base64,${image.data}`
-      : src;
+  const image = useQuery(
+    api.siteImages.getBySlot,
+    slot ? { slot } : ("skip" as any),
+  ) as any;
+  const resolved = image?.data && image?.mimeType
+    ? `data:${image.mimeType};base64,${image.data}`
+    : src;
 
   if (hasError) {
     return (
@@ -49,7 +51,6 @@ export function SignatureDishes() {
       <div className="grain-overlay absolute inset-0" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-        {/* Header */}
         <ScrollReveal>
           <div className="text-center">
             <div className="vintage-divider mx-auto mb-8 max-w-xs">
@@ -67,20 +68,16 @@ export function SignatureDishes() {
           </div>
         </ScrollReveal>
 
-        {/* Dishes Grid */}
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
           {restaurant.signatureDishes.map((dish, i) => (
             <ScrollReveal key={dish.name} delay={i * 0.2}>
               <div className="group relative overflow-hidden">
-                {/* Image */}
                 <div className="aspect-[4/5] overflow-hidden sm:aspect-[3/4]">
                   <DishImage src={dish.image} alt={dish.name} />
                 </div>
 
-                {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/30 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-90" />
 
-                {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
                   <div className="mb-3 h-px w-10 bg-gold/50 transition-all duration-500 group-hover:w-16" />
                   <h3 className="font-serif text-3xl text-cream sm:text-4xl">
@@ -95,7 +92,6 @@ export function SignatureDishes() {
           ))}
         </div>
 
-        {/* CTA */}
         <ScrollReveal delay={0.3}>
           <div className="mt-16 text-center">
             <a

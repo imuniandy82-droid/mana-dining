@@ -42,7 +42,7 @@ const schema = defineSchema(
       data: v.string(),
       mimeType: v.string(),
       order: v.number(),
-    }).index("by_slot", ["slot"])
+    }).index("by_slot", ["slot"]),
   },
   {
     schemaValidation: false,

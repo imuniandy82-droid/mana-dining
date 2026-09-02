@@ -37,11 +37,10 @@ function HeroImage({ src }: { src: string }) {
 }
 
 function HeroWithUpload() {
-  const image = useQuery(api.siteImages.getBySlot, { slot: "hero" });
-  const src =
-    image && "data" in image
-      ? `data:${image.mimeType};base64,${image.data}`
-      : restaurant.heroImage;
+  const image = useQuery(api.siteImages.getBySlot, { slot: "hero" }) as any;
+  const src = image?.data && image?.mimeType
+    ? `data:${image.mimeType};base64,${image.data}`
+    : restaurant.heroImage;
   return <HeroImage src={src} />;
 }
 
@@ -62,23 +61,17 @@ export function Hero() {
       id="home"
       className="relative h-screen min-h-[600px] w-full overflow-hidden"
     >
-      {/* Background Image with Parallax */}
       <motion.div className="absolute inset-0" style={{ y: imageY }}>
         <HeroWithUpload />
       </motion.div>
 
-      {/* Dark Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-espresso/60 via-espresso/40 to-espresso/80" />
-
-      {/* Grain Texture */}
       <div className="grain-overlay absolute inset-0" />
 
-      {/* Content */}
       <motion.div
         style={{ opacity: textOpacity, y: textY }}
         className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
       >
-        {/* Small decorative line */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -86,7 +79,6 @@ export function Hero() {
           className="mb-8 h-px w-16 bg-gold/60"
         />
 
-        {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,7 +88,6 @@ export function Hero() {
           {restaurant.name}
         </motion.h1>
 
-        {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -106,7 +97,6 @@ export function Hero() {
           {restaurant.tagline}
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,7 +118,6 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -147,7 +136,6 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Mobile bottom padding for sticky CTA */}
       <div className="h-14 lg:hidden" />
     </section>
   );

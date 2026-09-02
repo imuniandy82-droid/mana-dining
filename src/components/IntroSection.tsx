@@ -4,11 +4,10 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 function IntroImage() {
-  const image = useQuery(api.siteImages.getBySlot, { slot: "intro" });
-  const src =
-    image && "data" in image
-      ? `data:${image.mimeType};base64,${image.data}`
-      : restaurant.introImage;
+  const image = useQuery(api.siteImages.getBySlot, { slot: "intro" }) as any;
+  const src = image?.data && image?.mimeType
+    ? `data:${image.mimeType};base64,${image.data}`
+    : restaurant.introImage;
   return (
     <ParallaxImage
       src={src}
@@ -24,7 +23,6 @@ export function IntroSection() {
       <div className="grain-overlay absolute inset-0" />
 
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-10">
-        {/* Text */}
         <div className="order-2 lg:order-1">
           <ScrollReveal>
             <div className="vintage-divider mb-8">
@@ -56,10 +54,8 @@ export function IntroSection() {
           </ScrollReveal>
         </div>
 
-        {/* Image */}
         <ScrollReveal direction="right" delay={0.2} className="relative order-1 lg:order-2">
           <IntroImage />
-          {/* Decorative frame corner */}
           <div className="pointer-events-none absolute -bottom-3 -right-3 h-20 w-20 border-b border-r border-gold/20" />
         </ScrollReveal>
       </div>

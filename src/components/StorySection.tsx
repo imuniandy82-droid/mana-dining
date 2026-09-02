@@ -4,11 +4,10 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 function StoryImage() {
-  const image = useQuery(api.siteImages.getBySlot, { slot: "story" });
-  const src =
-    image && "data" in image
-      ? `data:${image.mimeType};base64,${image.data}`
-      : restaurant.storyImage;
+  const image = useQuery(api.siteImages.getBySlot, { slot: "story" }) as any;
+  const src = image?.data && image?.mimeType
+    ? `data:${image.mimeType};base64,${image.data}`
+    : restaurant.storyImage;
   return (
     <ParallaxImage
       src={src}
@@ -22,12 +21,10 @@ export function StorySection() {
   return (
     <section className="relative overflow-hidden aged-paper py-24 lg:py-32">
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-10">
-        {/* Image */}
         <ScrollReveal direction="left">
           <StoryImage />
         </ScrollReveal>
 
-        {/* Text */}
         <div>
           <ScrollReveal delay={0.15}>
             <div className="vintage-divider mb-8">
