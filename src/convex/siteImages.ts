@@ -1,11 +1,65 @@
 import { getAuthUserId } from "@convex-dev/auth/server";
 import { v } from "convex/values";
-import { mutation, query } from "./_generated/server";
+import { mutation, query, type MutationCtx } from "./_generated/server";
+
+async function deleteSlot(ctx: MutationCtx, slot: string) {
+  const existing = await ctx.db
+    .query("siteImages")
+    .withIndex("by_slot", (q) => q.eq("slot", slot))
+    .collect();
+
+  for (const doc of existing) {
+    if (doc.storageId) {
+      await ctx.storage.delete(doc.storageId);
+    }
+    await ctx.db.delete(doc._id);
+  }
+}
+
+export const generateUploadUrl = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) throw new Error("Not authenticated");
+    return await ctx.storage.generateUploadUrl();
+  },
+});
+
+export const saveSlot = mutation({
+  args: {
+    slot: v.string(),
+    alt: v.string(),
+    category: v.string(),
+    order: v.number(),
+    storageId: v.id("_storage"),
+  },
+  handler: async (ctx, args) => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) throw new Error("Not authenticated");
+
+    // Replace any previous image for this slot (including its storage file).
+    await deleteSlot(ctx, args.slot);
+
+    return await ctx.db.insert("siteImages", {
+      slot: args.slot,
+      alt: args.alt,
+      category: args.category,
+      order: args.order,
+      storageId: args.storageId,
+    });
+  },
+});
 
 export const list = query({
   args: {},
   handler: async (ctx) => {
-    return await ctx.db.query("siteImages").collect();
+    const docs = await ctx.db.query("siteImages").collect();
+    return await Promise.all(
+      docs.map(async (doc) => ({
+        ...doc,
+        url: doc.storageId ? await ctx.storage.getUrl(doc.storageId) : null,
+      })),
+    );
   },
 });
 
@@ -16,40 +70,14 @@ export const getBySlot = query({
       .query("siteImages")
       .withIndex("by_slot", (q) => q.eq("slot", args.slot))
       .collect();
-    return results[0] ?? null;
-  },
-});
 
-export const upload = mutation({
-  args: {
-    slot: v.string(),
-    alt: v.string(),
-    category: v.string(),
-    data: v.string(),
-    mimeType: v.string(),
-    order: v.number(),
-  },
-  handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
-    if (!userId) throw new Error("Not authenticated");
+    const doc = results[0] ?? null;
+    if (!doc) return null;
 
-    const existing = await ctx.db
-      .query("siteImages")
-      .withIndex("by_slot", (q) => q.eq("slot", args.slot))
-      .collect();
-
-    for (const doc of existing) {
-      await ctx.db.delete(doc._id);
-    }
-
-    return await ctx.db.insert("siteImages", {
-      slot: args.slot,
-      alt: args.alt,
-      category: args.category,
-      data: args.data,
-      mimeType: args.mimeType,
-      order: args.order,
-    });
+    return {
+      ...doc,
+      url: doc.storageId ? await ctx.storage.getUrl(doc.storageId) : null,
+    };
   },
 });
 
@@ -58,15 +86,7 @@ export const remove = mutation({
   handler: async (ctx, args) => {
     const userId = await getAuthUserId(ctx);
     if (!userId) throw new Error("Not authenticated");
-
-    const existing = await ctx.db
-      .query("siteImages")
-      .withIndex("by_slot", (q) => q.eq("slot", args.slot))
-      .collect();
-
-    for (const doc of existing) {
-      await ctx.db.delete(doc._id);
-    }
+    await deleteSlot(ctx, args.slot);
   },
 });
 
@@ -75,40 +95,14 @@ export const clearAll = mutation({
   handler: async (ctx) => {
     const userId = await getAuthUserId(ctx);
     if (!userId) throw new Error("Not authenticated");
+
     const all = await ctx.db.query("siteImages").collect();
     for (const doc of all) {
+      if (doc.storageId) {
+        await ctx.storage.delete(doc.storageId);
+      }
       await ctx.db.delete(doc._id);
     }
     return all.length;
-  },
-});
-
-export const bulkUpload = mutation({
-  args: {
-    images: v.array(
-      v.object({
-        slot: v.string(),
-        alt: v.string(),
-        category: v.string(),
-        data: v.string(),
-        mimeType: v.string(),
-        order: v.number(),
-      }),
-    ),
-  },
-  handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
-    if (!userId) throw new Error("Not authenticated");
-
-    for (const img of args.images) {
-      const existing = await ctx.db
-        .query("siteImages")
-        .withIndex("by_slot", (q) => q.eq("slot", img.slot))
-        .collect();
-      for (const doc of existing) {
-        await ctx.db.delete(doc._id);
-      }
-      await ctx.db.insert("siteImages", img);
-    }
   },
 });

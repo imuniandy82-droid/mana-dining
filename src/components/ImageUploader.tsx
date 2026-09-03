@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import type { Id } from "@/convex/_generated/dataModel";
 import { Button } from "@/components/ui/button";
 import { Trash2, Upload, Check, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -13,14 +14,8 @@ interface ImageUploaderProps {
   onUploaded?: () => void;
 }
 
-/** Compress and resize an image file for Convex base64 storage.
- *  Target: final JPEG under ~300 KB so the base64 doc stays under 400 KB.
- */
-function compressImage(
-  file: File,
-  maxDim = 900,
-  quality = 0.65,
-): Promise<{ data: string; mimeType: string }> {
+/** Resize and compress an image file before uploading to Convex storage. */
+function compressImage(file: File, maxDim = 1600, quality = 0.75): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const img = new Image();
     const url = URL.createObjectURL(file);
@@ -50,14 +45,7 @@ function compressImage(
       canvas.toBlob(
         (blob) => {
           if (!blob) return reject(new Error("Compression failed"));
-          const reader = new FileReader();
-          reader.onload = () => {
-            const result = reader.result as string;
-            const base64 = result.split(",")[1] || result;
-            resolve({ data: base64, mimeType: "image/jpeg" });
-          };
-          reader.onerror = () => reject(reader.error);
-          reader.readAsDataURL(blob);
+          resolve(blob);
         },
         "image/jpeg",
         quality,
@@ -111,7 +99,8 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const uploadMutation = useMutation(api.siteImages.upload);
+  const generateUploadUrl = useMutation(api.siteImages.generateUploadUrl);
+  const saveSlot = useMutation(api.siteImages.saveSlot);
   const removeMutation = useMutation(api.siteImages.remove);
 
   const info = getSlotInfo(slot);
@@ -130,16 +119,29 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
       setErrorMsg(null);
 
       try {
-        const { data, mimeType } = await compressImage(file);
+        const blob = await compressImage(file);
         setStatus("uploading");
 
-        await uploadMutation({
+        // 1. Get a one-time upload URL from Convex
+        const uploadUrl = await generateUploadUrl();
+        // 2. Upload the image bytes straight to Convex file storage
+        const result = await fetch(uploadUrl, {
+          method: "POST",
+          headers: { "Content-Type": blob.type },
+          body: blob,
+        });
+        if (!result.ok) {
+          throw new Error(`Upload failed (${result.status})`);
+        }
+        const { storageId } = (await result.json()) as { storageId: string };
+
+        // 3. Point the slot at the stored file
+        await saveSlot({
           slot,
           alt: info.label,
           category: info.category,
-          data,
-          mimeType,
           order: SLOT_ORDER_MAP[slot] ?? 99,
+          storageId: storageId as Id<"_storage">,
         });
 
         setStatus("success");
@@ -154,7 +156,7 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
         setTimeout(() => { setStatus("idle"); setErrorMsg(null); }, 4000);
       }
     },
-    [slot, info, uploadMutation, onUploaded],
+    [slot, info, generateUploadUrl, saveSlot, onUploaded],
   );
 
   const handleDrop = useCallback(

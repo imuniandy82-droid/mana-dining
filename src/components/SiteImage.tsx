@@ -12,9 +12,7 @@ export function SiteImage({
   alt,
   ...props
 }: SiteImageProps) {
-  const image = useQuery(api.siteImages.getBySlot, { slot }) as any;
-  const src = image?.data && image?.mimeType
-    ? `data:${image.mimeType};base64,${image.data}`
-    : fallbackSrc;
+  const image = useQuery(api.siteImages.getBySlot, { slot });
+  const src = image?.url ?? fallbackSrc;
   return <img src={src} alt={alt ?? ""} {...props} />;
 }

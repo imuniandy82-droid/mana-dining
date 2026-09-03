@@ -35,13 +35,17 @@ const schema = defineSchema(
     // add other tables here
 
     // ── Site Images ──────────────────────────────────────────────
+    // Images are stored in Convex file storage; each slot doc holds a
+    // storageId. `data`/`mimeType` are kept optional for legacy base64
+    // records and can be ignored once cleared.
     siteImages: defineTable({
       slot: v.string(),
       alt: v.string(),
       category: v.string(),
-      data: v.string(),
-      mimeType: v.string(),
       order: v.number(),
+      storageId: v.optional(v.id("_storage")),
+      data: v.optional(v.string()),
+      mimeType: v.optional(v.string()),
     }).index("by_slot", ["slot"]),
   },
   {

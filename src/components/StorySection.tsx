@@ -4,10 +4,8 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 function StoryImage() {
-  const image = useQuery(api.siteImages.getBySlot, { slot: "story" }) as any;
-  const src = image?.data && image?.mimeType
-    ? `data:${image.mimeType};base64,${image.data}`
-    : restaurant.storyImage;
+  const image = useQuery(api.siteImages.getBySlot, { slot: "story" });
+  const src = image?.url ?? restaurant.storyImage;
   return (
     <ParallaxImage
       src={src}

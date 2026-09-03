@@ -37,10 +37,8 @@ function HeroImage({ src }: { src: string }) {
 }
 
 function HeroWithUpload() {
-  const image = useQuery(api.siteImages.getBySlot, { slot: "hero" }) as any;
-  const src = image?.data && image?.mimeType
-    ? `data:${image.mimeType};base64,${image.data}`
-    : restaurant.heroImage;
+  const image = useQuery(api.siteImages.getBySlot, { slot: "hero" });
+  const src = image?.url ?? restaurant.heroImage;
   return <HeroImage src={src} />;
 }
 

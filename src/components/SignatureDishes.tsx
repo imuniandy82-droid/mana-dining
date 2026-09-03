@@ -12,13 +12,8 @@ const DISH_SLOTS: Record<string, string> = {
 function DishImage({ src, alt }: { src: string; alt: string }) {
   const [hasError, setHasError] = useState(false);
   const slot = DISH_SLOTS[alt] || "";
-  const image = useQuery(
-    api.siteImages.getBySlot,
-    slot ? { slot } : ("skip" as any),
-  ) as any;
-  const resolved = image?.data && image?.mimeType
-    ? `data:${image.mimeType};base64,${image.data}`
-    : src;
+  const image = useQuery(api.siteImages.getBySlot, slot ? { slot } : "skip");
+  const resolved = image?.url ?? src;
 
   if (hasError) {
     return (

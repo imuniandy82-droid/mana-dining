@@ -2,6 +2,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 export type SiteImage = {
+  _id: string;
   slot: string;
   alt: string;
   category: string;
@@ -58,9 +59,14 @@ export function useSiteImages() {
   if (!raw) return null;
   const map = new Map<string, SiteImage>();
   for (const img of raw) {
-    const d = img as any;
-    const url = d.data && d.mimeType ? `data:${d.mimeType};base64,${d.data}` : null;
-    map.set(img.slot, { slot: img.slot, alt: img.alt, category: img.category, order: img.order, url });
+    map.set(img.slot, {
+      _id: img._id,
+      slot: img.slot,
+      alt: img.alt,
+      category: img.category,
+      order: img.order,
+      url: img.url,
+    });
   }
   return map;
 }

@@ -14,10 +14,8 @@ function ExperienceImage({
   alt: string;
   className?: string;
 }) {
-  const image = useQuery(api.siteImages.getBySlot, { slot }) as any;
-  const resolved = image?.data && image?.mimeType
-    ? `data:${image.mimeType};base64,${image.data}`
-    : src;
+  const image = useQuery(api.siteImages.getBySlot, { slot });
+  const resolved = image?.url ?? src;
   return (
     <ParallaxImage
       src={resolved}
