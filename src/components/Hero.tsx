@@ -36,10 +36,19 @@ function HeroImage({ src }: { src: string }) {
   );
 }
 
+/** Shows nothing while the Convex query loads (the section gradient
+ *  background is already visible), then the uploaded photo once ready. */
 function HeroWithUpload() {
   const image = useQuery(api.siteImages.getBySlot, { slot: "hero" });
-  const src = image?.url ?? restaurant.heroImage;
-  return <HeroImage src={src} />;
+
+  // useQuery returns undefined while loading — show nothing during that
+  // brief window so we never hit the broken /images/hero.jpg fallback.
+  if (image === undefined) {
+    return <div className="h-[120%] w-full bg-espresso/50" />;
+  }
+
+  // query resolved — either we have an uploaded photo or nothing
+  return <HeroImage src={image?.url ?? restaurant.heroImage} />;
 }
 
 export function Hero() {

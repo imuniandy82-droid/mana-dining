@@ -73,12 +73,20 @@ export function ParallaxImage({
   alt,
   className = "",
 }: {
-  src: string;
+  src?: string | null;
   alt: string;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [hasError, setHasError] = useState(false);
+
+  // While the Convex query is loading, src is null/undefined.
+  // Show a dark placeholder so the layout stays stable.
+  if (!src) {
+    return (
+      <div ref={ref} className={`relative overflow-hidden bg-espresso/50 ${className}`} />
+    );
+  }
 
   if (hasError) {
     return (

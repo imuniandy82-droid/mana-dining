@@ -5,10 +5,18 @@ import { api } from "@/convex/_generated/api";
 
 function IntroImage() {
   const image = useQuery(api.siteImages.getBySlot, { slot: "intro" });
-  const src = image?.url ?? restaurant.introImage;
+
+  // Show nothing while the Convex query loads — the dark background
+  // is already visible from the section styling.
+  if (image === undefined) {
+    return (
+      <div className="aspect-[4/5] w-full bg-espresso/50 rounded-sm" />
+    );
+  }
+
   return (
     <ParallaxImage
-      src={src}
+      src={image?.url ?? restaurant.introImage}
       alt="Elegant plated dish at Mana restaurant"
       className="aspect-[4/5] w-full"
     />
