@@ -53,7 +53,7 @@ export const saveSlot = mutation({
 export const list = query({
   args: {},
   handler: async (ctx) => {
-    const docs = await ctx.db.query("siteImages").collect();
+    const docs = await ctx.db.query("siteImages").order("desc").collect();
     return await Promise.all(
       docs.map(async (doc) => ({
         ...doc,
@@ -69,15 +69,19 @@ export const getBySlot = query({
     const results = await ctx.db
       .query("siteImages")
       .withIndex("by_slot", (q) => q.eq("slot", args.slot))
+      .order("desc")
       .collect();
+
+    // Prefer the newest record whose stored file is actually reachable.
+    // A stale record whose file was deleted never blocks the real photo.
+    for (const doc of results) {
+      const url = doc.storageId ? await ctx.storage.getUrl(doc.storageId) : null;
+      if (url) return { ...doc, url };
+    }
 
     const doc = results[0] ?? null;
     if (!doc) return null;
-
-    return {
-      ...doc,
-      url: doc.storageId ? await ctx.storage.getUrl(doc.storageId) : null,
-    };
+    return { ...doc, url: null };
   },
 });
 

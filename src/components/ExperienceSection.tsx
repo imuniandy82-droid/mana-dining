@@ -5,24 +5,15 @@ import { api } from "@/convex/_generated/api";
 
 function ExperienceImage({
   slot,
-  src,
   alt,
   className,
 }: {
   slot: string;
-  src: string;
   alt: string;
   className?: string;
 }) {
   const image = useQuery(api.siteImages.getBySlot, { slot });
-  const resolved = image?.url ?? src;
-  return (
-    <ParallaxImage
-      src={resolved}
-      alt={alt}
-      className={className}
-    />
-  );
+  return <ParallaxImage src={image?.url ?? null} alt={alt} className={className} />;
 }
 
 export function ExperienceSection() {
@@ -61,7 +52,6 @@ export function ExperienceSection() {
               >
                 <ExperienceImage
                   slot={`experience-${i + 1}`}
-                  src={img.src}
                   alt={img.alt}
                   className="w-full h-full"
                 />

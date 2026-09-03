@@ -10,31 +10,15 @@ function slotFromSrc(src: string): string {
 }
 
 function GalleryImage({ src, alt }: { src: string; alt: string }) {
-  const [hasError, setHasError] = useState(false);
   const slot = slotFromSrc(src);
-
-  if (hasError) {
-    return (
-      <div className="flex aspect-[4/3] w-full items-center justify-center bg-gradient-to-br from-espresso via-espresso-light to-warm-brown/30">
-        <div className="text-center px-4">
-          <span className="block font-serif text-sm tracking-[0.1em] text-cream/25 sm:text-base">
-            {alt}
-          </span>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="img-fallback">
       {slot ? (
         <SiteImage
           slot={slot}
-          fallbackSrc={src}
           alt={alt}
-          loading="lazy"
           className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"
-          onError={() => setHasError(true)}
         />
       ) : (
         <img
@@ -42,7 +26,6 @@ function GalleryImage({ src, alt }: { src: string; alt: string }) {
           alt={alt}
           loading="lazy"
           className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"
-          onError={() => setHasError(true)}
         />
       )}
     </div>

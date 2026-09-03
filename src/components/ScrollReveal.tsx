@@ -67,20 +67,22 @@ export function ScrollReveal({
   );
 }
 
-/* Parallax image wrapper with error handling */
+/* Parallax image wrapper with error handling. Pass null while the upload
+ * query is loading or when a slot has no photo — a designed placeholder is
+ * shown instead of a broken image request. */
 export function ParallaxImage({
   src,
   alt,
   className = "",
 }: {
-  src: string;
+  src: string | null;
   alt: string;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [hasError, setHasError] = useState(false);
 
-  if (hasError) {
+  if (hasError || !src) {
     return (
       <div
         ref={ref}

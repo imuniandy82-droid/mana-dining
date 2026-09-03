@@ -10,13 +10,13 @@ const DISH_SLOTS: Record<string, string> = {
   "PAELLA": "dish-paella",
 };
 
-function DishImage({ src, alt }: { src: string; alt: string }) {
+function DishImage({ alt }: { alt: string }) {
   const [hasError, setHasError] = useState(false);
   const slot = DISH_SLOTS[alt] || "";
   const image = useQuery(api.siteImages.getBySlot, slot ? { slot } : "skip");
-  const resolved = image?.url ?? src;
+  const src = image?.url ?? null;
 
-  if (hasError) {
+  if (hasError || !src) {
     return (
       <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-espresso via-espresso-light to-warm-brown/30">
         <div className="text-center">
@@ -31,7 +31,7 @@ function DishImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="h-full w-full img-fallback">
       <img
-        src={resolved}
+        src={src}
         alt={alt}
         loading="lazy"
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 img-warm"
@@ -69,7 +69,7 @@ export function SignatureDishes() {
             <ScrollReveal key={dish.name} delay={i * 0.2}>
               <div className="group relative overflow-hidden">
                 <div className="aspect-[4/5] overflow-hidden sm:aspect-[3/4]">
-                  <DishImage src={dish.image} alt={dish.name} />
+                  <DishImage alt={dish.name} />
                 </div>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/30 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-90" />

@@ -5,10 +5,9 @@ import { api } from "@/convex/_generated/api";
 
 function IntroImage() {
   const image = useQuery(api.siteImages.getBySlot, { slot: "intro" });
-  const src = image?.url ?? restaurant.introImage;
   return (
     <ParallaxImage
-      src={src}
+      src={image?.url ?? null}
       alt="Elegant plated dish at Mana restaurant"
       className="aspect-[4/5] w-full"
     />
