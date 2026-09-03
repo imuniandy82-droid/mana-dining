@@ -9,9 +9,9 @@
 
 export const restaurant = {
   name: "MANA",
-  tagline: "Good food. Good company. A place to linger.",
+  tagline: "Come for the food.\nStay for the atmosphere.",
   description:
-    "A cozy, intimate dining destination in the heart of Kuala Lumpur — where good food, warm company, and unhurried evenings come together.",
+    "Familiar comfort, reimagined with prestige. Rich, melt-in-your-mouth texture with a bold depth of flavour. At Mana, the best meals are shared — dishes crafted with care, savoured in good company, paired with the kind of conversation that only happens when time slows down.",
   dietary: "Pork Free & Lard Free",
 
   // ── Contact ──────────────────────────────────────────────
@@ -74,20 +74,22 @@ export const restaurant = {
   introImage: "/images/intro.jpg",
   introHeading: "A place worth slowing down for.",
   introText:
-    "Tucked inside a pre-war shophouse on Jalan Hang Kasturi, Mana is a place to slow down and savour. Bold orange walls, exposed concrete, flowing fabric drapes, and warm globe lighting create an atmosphere that is at once industrial and intimate. The food is local fusion with an international twist — from Angus Short Ribs braised for five hours to Spanish Mun Fan meant for sharing. Whether it is a weeknight dinner, a long weekend lunch, or a quiet date night, Mana invites you to stay a while.",
+    "Mana lives inside a pre-war shophouse on Jalan Hang Kasturi — once a place for trade, now a place for the table. Intimate corners, warm lighting, and curated bites create an atmosphere worlds away from the hustle outside. Every wall tells a story, every dish carries intention, and every evening unfolds at its own pace.",
 
   // ── Signature Dishes ─────────────────────────────────────
   signatureDishes: [
     {
-      name: "Angus Short Ribs",
+      name: "ANGUS PICANHA",
+      tagline: "This month the table bows to one cut",
       description:
-        "Tomato slow braised 5 hours and finish on grill, side with garlic mashed. A dish that defines the Mana experience.",
-      image: "/images/dish-angus-short-ribs.jpg",
+        "Flame-seared to juicy perfection, this prized cut is finished with a vibrant herb chimichurri and paired with golden, crispy potatoes for a bold, mouthwatering bite.",
+      image: "/images/dish-angus-picanha.jpg",
     },
     {
-      name: "Spanish Mun Fan (Paella)",
+      name: "PAELLA",
+      tagline: "A nod to tradition or a toast to innovation?",
       description:
-        "Homemade tomato sauce, premium bomba rice, tiger prawn, clams, good to share with 3 pax. Inspiration in every bite.",
+        "A masterpiece of premium bomba rice simmered in a rich, slow-cooked broth, loaded with fresh prawns and clams to share the true essence of coastal passion in every bite.",
       image: "/images/dish-paella.jpg",
     },
   ],

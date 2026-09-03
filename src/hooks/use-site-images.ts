@@ -17,7 +17,7 @@ const IMAGE_SLOTS = {
   "experience-1": { label: "Experience Photo 1", category: "space" },
   "experience-2": { label: "Experience Photo 2", category: "space" },
   "experience-3": { label: "Experience Photo 3", category: "space" },
-  "dish-angus-short-ribs": { label: "Angus Short Ribs Dish", category: "food" },
+  "dish-angus-short-ribs": { label: "Angus Picanha Dish", category: "food" },
   "dish-paella": { label: "Paella Dish", category: "food" },
   "food-1": { label: "Food Photo 1", category: "food" },
   "food-2": { label: "Food Photo 2", category: "food" },

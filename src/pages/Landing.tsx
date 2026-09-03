@@ -3,7 +3,6 @@ import { Hero } from "@/components/Hero";
 import { IntroSection } from "@/components/IntroSection";
 import { SignatureDishes } from "@/components/SignatureDishes";
 import { ExperienceSection } from "@/components/ExperienceSection";
-import { StorySection } from "@/components/StorySection";
 import { GallerySection } from "@/components/GallerySection";
 import { MenuSection } from "@/components/MenuSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
@@ -20,7 +19,6 @@ export default function Landing() {
         <IntroSection />
         <SignatureDishes />
         <ExperienceSection />
-        <StorySection />
         <GallerySection />
         <MenuSection />
         <ReviewsSection />

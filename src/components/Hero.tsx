@@ -77,22 +77,31 @@ export function Hero() {
           className="mb-8 h-px w-16 bg-gold/60"
         />
 
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mb-6 font-sans text-[11px] tracking-[0.45em] uppercase text-gold/70"
+        >
+          {restaurant.name} · Kuala Lumpur
+        </motion.p>
+
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-serif text-7xl font-light tracking-[0.3em] text-cream sm:text-8xl md:text-9xl"
+          transition={{ delay: 0.6, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="whitespace-pre-line font-serif text-4xl font-light leading-snug text-cream sm:text-5xl md:text-6xl lg:text-7xl"
         >
-          {restaurant.name}
+          {restaurant.tagline}
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mt-6 max-w-md font-serif text-lg italic text-cream/70 sm:text-xl"
+          transition={{ delay: 0.85, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mt-8 max-w-xl font-sans text-sm leading-relaxed text-cream/65 sm:text-base"
         >
-          {restaurant.tagline}
+          {restaurant.description}
         </motion.p>
 
         <motion.div

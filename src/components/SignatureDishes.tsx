@@ -4,9 +4,10 @@ import { restaurant } from "@/data/restaurant";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
+// Slot keys stay stable so previously uploaded photos keep showing.
 const DISH_SLOTS: Record<string, string> = {
-  "Angus Short Ribs": "dish-angus-short-ribs",
-  "Spanish Mun Fan (Paella)": "dish-paella",
+  "ANGUS PICANHA": "dish-angus-short-ribs",
+  "PAELLA": "dish-paella",
 };
 
 function DishImage({ src, alt }: { src: string; alt: string }) {
@@ -75,9 +76,12 @@ export function SignatureDishes() {
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
                   <div className="mb-3 h-px w-10 bg-gold/50 transition-all duration-500 group-hover:w-16" />
-                  <h3 className="font-serif text-3xl text-cream sm:text-4xl">
+                  <h3 className="font-serif text-3xl tracking-[0.06em] text-cream sm:text-4xl">
                     {dish.name}
                   </h3>
+                  <p className="mt-2 max-w-sm font-serif text-sm italic text-gold/60 sm:text-base">
+                    {dish.tagline}
+                  </p>
                   <p className="mt-3 max-w-sm font-sans text-sm leading-relaxed text-cream/60">
                     {dish.description}
                   </p>
