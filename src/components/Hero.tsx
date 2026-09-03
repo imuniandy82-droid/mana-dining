@@ -90,9 +90,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mb-6 font-sans text-[11px] tracking-[0.45em] uppercase text-gold/70"
+          className="mb-4 font-serif text-5xl tracking-[0.15em] text-cream sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          {restaurant.name} · Kuala Lumpur
+          {restaurant.name}
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mb-6 font-sans text-[11px] tracking-[0.45em] uppercase text-gold/60"
+        >
+          Kuala Lumpur
         </motion.p>
 
         <motion.h1
