@@ -5,12 +5,10 @@ import { api } from "@/convex/_generated/api";
 import { ChevronDown } from "lucide-react";
 import { restaurant } from "@/data/restaurant";
 
-function HeroImage({ src }: { src: string | null }) {
+function HeroImage({ src }: { src: string }) {
   const [hasError, setHasError] = useState(false);
 
-  // While the query loads, or when no photo is uploaded, show the brand
-  // placeholder instead of requesting a broken fallback image.
-  if (!src || hasError) {
+  if (hasError) {
     return (
       <div className="flex h-[120%] w-full items-center justify-center bg-gradient-to-br from-espresso via-espresso-light to-warm-brown/30">
         <div className="text-center">
@@ -40,7 +38,8 @@ function HeroImage({ src }: { src: string | null }) {
 
 function HeroWithUpload() {
   const image = useQuery(api.siteImages.getBySlot, { slot: "hero" });
-  return <HeroImage src={image?.url ?? null} />;
+  const src = image?.url ?? restaurant.heroImage;
+  return <HeroImage src={src} />;
 }
 
 export function Hero() {
