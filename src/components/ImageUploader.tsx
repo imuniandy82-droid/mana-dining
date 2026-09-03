@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
@@ -14,14 +14,25 @@ interface ImageUploaderProps {
   onUploaded?: () => void;
 }
 
-/** Resize and compress an image file before uploading to Convex storage. */
-function compressImage(file: File, maxDim = 1600, quality = 0.75): Promise<Blob> {
+const UPLOAD_TIMEOUT_MS = 30000;
+const VALID_IMAGE_EXT = /\.(jpe?g|png|webp|gif|heic|heif|avif)$/i;
+
+/** Resize and compress an image file before uploading to Convex storage.
+ *  Falls back to the original file if the browser cannot decode it
+ *  (e.g. HEIC from an iPhone). */
+function compressImage(
+  file: File,
+  maxDim = 1600,
+  quality = 0.75,
+): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const img = new Image();
     const url = URL.createObjectURL(file);
 
+    const cleanup = () => URL.revokeObjectURL(url);
+
     img.onload = () => {
-      URL.revokeObjectURL(url);
+      cleanup();
 
       let { width, height } = img;
       if (width > maxDim || height > maxDim) {
@@ -40,6 +51,9 @@ function compressImage(file: File, maxDim = 1600, quality = 0.75): Promise<Blob>
       const ctx = canvas.getContext("2d");
       if (!ctx) return reject(new Error("Canvas not supported"));
 
+      // White background first, so PNG/WEBP transparency doesn't turn black.
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, width, height);
       ctx.drawImage(img, 0, 0, width, height);
 
       canvas.toBlob(
@@ -53,8 +67,9 @@ function compressImage(file: File, maxDim = 1600, quality = 0.75): Promise<Blob>
     };
 
     img.onerror = () => {
-      URL.revokeObjectURL(url);
-      reject(new Error("Failed to load image"));
+      cleanup();
+      // Browser cannot decode this file (HEIC/HEIF on most devices).
+      reject(new Error("Unsupported format"));
     };
 
     img.src = url;
@@ -97,7 +112,11 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
   const [isDragOver, setIsDragOver] = useState(false);
   const [status, setStatus] = useState<UploadStatus>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  // Immediate local preview while the upload is in flight. Revoked after use.
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const previewUrlRef = useRef<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const statusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const generateUploadUrl = useMutation(api.siteImages.generateUploadUrl);
   const saveSlot = useMutation(api.siteImages.saveSlot);
@@ -106,30 +125,87 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
   const info = getSlotInfo(slot);
   const hasImage = !!image?.url;
 
+  const replacePreview = useCallback((url: string | null) => {
+    if (previewUrlRef.current) {
+      URL.revokeObjectURL(previewUrlRef.current);
+    }
+    previewUrlRef.current = url;
+    setPreviewUrl(url);
+  }, []);
+
+  const resetStatus = useCallback((status: UploadStatus, msg: string | null) => {
+    if (statusTimerRef.current) {
+      clearTimeout(statusTimerRef.current);
+      statusTimerRef.current = null;
+    }
+    setStatus(status);
+    setErrorMsg(msg);
+  }, []);
+
+  // Revoke any pending preview object URL when the component unmounts.
+  useEffect(() => {
+    return () => {
+      if (previewUrlRef.current) {
+        URL.revokeObjectURL(previewUrlRef.current);
+      }
+      if (statusTimerRef.current) {
+        clearTimeout(statusTimerRef.current);
+      }
+    };
+  }, []);
+
   const handleFile = useCallback(
     async (file: File) => {
-      if (!file.type.startsWith("image/")) {
-        setErrorMsg("Please select an image file");
-        setStatus("error");
-        setTimeout(() => { setStatus("idle"); setErrorMsg(null); }, 3000);
+      const isImage = file.type.startsWith("image/") || VALID_IMAGE_EXT.test(file.name);
+      if (!isImage) {
+        resetStatus("error", "Please select an image file (JPG, PNG, WEBP)");
+        setTimeout(() => resetStatus("idle", null), 4000);
         return;
       }
 
-      setStatus("compressing");
-      setErrorMsg(null);
+      // Show the selected photo immediately — no waiting.
+      replacePreview(URL.createObjectURL(file));
+      resetStatus("compressing", null);
+
+      // Safety net: whatever happens, never stay in a loading state forever.
+      const safetyTimer = setTimeout(() => {
+        if (statusTimerRef.current) statusTimerRef.current = null;
+        replacePreview(null);
+        setStatus("error");
+        setErrorMsg("Upload timed out — please try again");
+        setTimeout(() => resetStatus("idle", null), 5000);
+      }, UPLOAD_TIMEOUT_MS + 15000);
+      statusTimerRef.current = safetyTimer;
 
       try {
-        const blob = await compressImage(file);
+        // Compress; if the browser can't decode the file (HEIC etc.), upload
+        // the original bytes instead — never fail silently.
+        let blob: Blob;
+        try {
+          blob = await compressImage(file);
+        } catch {
+          blob = file;
+        }
         setStatus("uploading");
 
         // 1. Get a one-time upload URL from Convex
         const uploadUrl = await generateUploadUrl();
-        // 2. Upload the image bytes straight to Convex file storage
-        const result = await fetch(uploadUrl, {
-          method: "POST",
-          headers: { "Content-Type": blob.type },
-          body: blob,
-        });
+
+        // 2. Upload the image bytes straight to Convex file storage with a
+        //    hard timeout so a stalled network can never hang forever.
+        const controller = new AbortController();
+        const uploadTimer = setTimeout(() => controller.abort(), UPLOAD_TIMEOUT_MS);
+        let result: Response;
+        try {
+          result = await fetch(uploadUrl, {
+            method: "POST",
+            headers: { "Content-Type": blob.type },
+            body: blob,
+            signal: controller.signal,
+          });
+        } finally {
+          clearTimeout(uploadTimer);
+        }
         if (!result.ok) {
           throw new Error(`Upload failed (${result.status})`);
         }
@@ -144,19 +220,29 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
           storageId: storageId as Id<"_storage">,
         });
 
-        setStatus("success");
+        // Upload finished — drop the local preview; the saved photo now
+        // comes from the database and survives refreshes.
+        replacePreview(null);
+        resetStatus("success", null);
         onUploaded?.();
-        setTimeout(() => setStatus("idle"), 2000);
+        setTimeout(() => resetStatus("idle", null), 2500);
       } catch (err) {
         console.error("Upload failed:", err);
-        setStatus("error");
-        setErrorMsg(
-          err instanceof Error ? err.message : "Upload failed. Try a smaller image.",
+        replacePreview(null);
+        const timedOut =
+          err instanceof DOMException && err.name === "AbortError";
+        resetStatus(
+          "error",
+          timedOut
+            ? "Upload timed out — check your connection and try again"
+            : err instanceof Error
+              ? err.message
+              : "Upload failed. Try a smaller image.",
         );
-        setTimeout(() => { setStatus("idle"); setErrorMsg(null); }, 4000);
+        setTimeout(() => resetStatus("idle", null), 5000);
       }
     },
-    [slot, info, generateUploadUrl, saveSlot, onUploaded],
+    [slot, info, generateUploadUrl, saveSlot, onUploaded, replacePreview, resetStatus],
   );
 
   const handleDrop = useCallback(
@@ -181,16 +267,16 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
   const handleDelete = useCallback(async () => {
     try {
       await removeMutation({ slot });
-      setStatus("success");
+      replacePreview(null);
+      resetStatus("success", null);
       onUploaded?.();
-      setTimeout(() => setStatus("idle"), 2000);
+      setTimeout(() => resetStatus("idle", null), 2000);
     } catch (err) {
       console.error("Delete failed:", err);
-      setStatus("error");
-      setErrorMsg("Failed to delete");
-      setTimeout(() => { setStatus("idle"); setErrorMsg(null); }, 3000);
+      resetStatus("error", "Failed to delete — please try again");
+      setTimeout(() => resetStatus("idle", null), 4000);
     }
-  }, [slot, removeMutation, onUploaded]);
+  }, [slot, removeMutation, onUploaded, replacePreview, resetStatus]);
 
   const statusLabel =
     status === "compressing"
@@ -201,6 +287,9 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
           ? "Done!"
           : null;
 
+  // Show the instant local preview while uploading, otherwise the saved photo.
+  const shownSrc = previewUrl ?? image?.url ?? null;
+
   return (
     <div className="group relative">
       <div
@@ -210,7 +299,7 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
             ? "border-primary bg-primary/5"
             : status === "error"
               ? "border-red-500/50"
-              : hasImage
+              : hasImage || previewUrl
                 ? "border-border"
                 : "border-muted-foreground/25 hover:border-muted-foreground/50",
         )}
@@ -223,10 +312,10 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
           }
         }}
       >
-        {image?.url ? (
+        {shownSrc ? (
           <>
             <img
-              src={image.url}
+              src={shownSrc}
               alt={info.label}
               className="h-full w-full object-cover"
             />
@@ -269,7 +358,7 @@ export function ImageUploader({ slot, image, onUploaded }: ImageUploaderProps) {
         )}
 
         {(status === "compressing" || status === "uploading") && (
-          <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+          <div className="absolute inset-0 flex items-center justify-center bg-background/60 backdrop-blur-sm">
             <div className="flex flex-col items-center gap-2">
               <div className="size-5 animate-spin rounded-full border-2 border-primary border-t-transparent" />
               <span className="text-xs text-muted-foreground">{statusLabel}</span>
